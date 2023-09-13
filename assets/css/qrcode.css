@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
+*
+ {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #4E77AD; 
+}
+
+
+.container{
+  height: 260px;
+  background: #fff;
+  max-width: 410px;
+  border-radius: 30px;
+  padding: 16px 25px;
+  transition: height 0.2s ease;
+}
+
+.container.active{
+  height: 530px;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+}
+
+header h1{
+  font-weight: 500;
+}
+
+.container .form{
+  margin: 20px 0 25px;
+}
+
+.form :where(input, button){
+  width: 100%;
+  height: 55px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.form input{
+  border-radius: 30px;
+  font-size: 18px;
+  padding: 0 17px;
+  border:1px solid #000000;
+}
+
+.form button{
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 17px;
+  background: #19375d;
+}
+
+.container .qr-code{
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  padding: 33px 0;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000000;
+}
+
+.qr-code img{
+  width: 180px;
+}
+
+.container.active .qr-code{
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s 0.05s ease;
+}
+
+
+
+.footer {  /* menu */
+  position: absolute;
+  height: 80px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
+  background-color: transparent;
+  text-align: center;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 0.6rem 1.3rem;
+  background-color: #fff;
+  border: 2px solid #fafafa;
+  font-size: 0.95rem;
+  color: #4E77AD;
+  line-height: 1;
+  border-radius: 25px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+ 
+  text-align: center;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+}
+.btn a {
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: #fff;
+}

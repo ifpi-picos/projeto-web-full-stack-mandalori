@@ -1,0 +1,217 @@
+/* css do dos cadrastros */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap');
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+body {
+    
+    background-color:  #4E77AD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-header {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: rgba(108, 99, 255, 0.45);
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 30px;
+}
+
+
+form{
+    width: max-content;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 30px;
+    text-align: center;
+    padding: 2em 0em;
+}
+
+form section{
+    margin: 2em;
+    margin-bottom: 0;
+    padding: 1.5em 2em;
+    border-radius: 30px;
+    box-shadow: 4px 4px 9px 2px rgba(0,0,0,0.39);
+}
+
+form section h1{
+    margin-bottom: 1rem;
+}
+.group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+    align-items: center;
+}
+.inp{
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+    text-align: end;
+}
+
+.inp input{
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border:  solid #00204a 0.5px;
+    padding: 8px;
+    padding-left: 5px;
+    border-width: 1px;
+}
+
+
+.inp label {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #000000c0;
+}
+.login input{
+	margin-top:10px;
+	background-color: #fff;
+	padding-left: 10px;
+	color: #cbd0f7;
+	border:  solid #001939 1px;
+	height:30px;
+	outline: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 1px 1px 6px #0000001c;
+}
+
+form [type ="submit"]{
+	display: flex;
+    color: #fff;
+	background-color: #1457ae;
+	font-size: 16px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height:50px;
+    width: 120px;
+    text-transform: uppercase;
+	font-weight: 500;
+    border-radius: 10px;
+	cursor: pointer;
+}
+
+.inp input:focus-visible {
+outline: 1px solid #04004b;
+}
+.inp input::placeholder{
+    font-size: .9em;
+}
+
+
+.btns{
+    width: 100%;
+    margin-top: 2em;
+}
+
+button{
+    margin: 0 10px;
+    padding: .6em 1.2em;
+    font-size: 1.1em;
+    border: none;
+    background-color: #786fa6;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .5s;
+}
+button:hover{
+    transform: scale(1.1);
+}
+
+
+.rodape {
+    position: fixed;
+    display: inline-flex;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.rodape {
+    position: fixed;
+    display: inline-flex;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.rodape a {
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: #ffffff;
+    margin: 0.6px;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    font-size: 30px;
+}
+
+.rodape a:hover {
+    width: 180px;
+    background-color: transparent;
+    color: transparent;
+}
+
+.rodape a i {
+    transition: 00.3s all;
+}
+
+.rodape a:hover > i {
+    transform: scale(0) rotate(360deg);
+}
+
+@media (max-width: 1000px){
+    form section{
+        width: 400px;
+    }
+}
+
+@media (max-width: 560px){
+    form{
+        background-color: transparent;
+    }
+    form section{
+        width: 300px;
+        margin: auto;
+        background-color: #fff;
+        margin-bottom: 1em;
+    }
+    .inp{
+        text-align: start;
+    }
+    
+    button{
+        background-color: #fff;
+        color: #000;
+    }
+}

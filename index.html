@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="author" content="@joyzinhw">
+    <meta name="description" content="codpet, um site para cadrastro de animais">
+    <meta name="keywords" content="sites, web, animais, cadrastro, adoção, localizacao">
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="assets/css/style-1.css">
+    <link rel="short icon" href="assets/img/icone.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="pwabuilder" href="/pwabuilder-sw.js">
+    
+
+    <title>login</title>
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+          navigator.serviceWorker.register("/pwabuilder-sw.js")
+        }
+
+    </script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+
+			<a href="index.html" aria-label="link do icone de inicio">
+				<i class="fa-sharp fa-solid fa-house"></i>
+            </a>
+		</div>
+
+        <div class="menu-btn">
+            <i class="fa fa-bars fa-2x" onclick="menuShow()"></i>
+        </div>
+
+        <ul>
+            <li> <a href="pages/ajuda.html"> AJUDA</a> </li>
+            <li> <a href="pages/sobre.html"> SOBRE</a> </li>
+        </ul>
+    </nav>
+     
+    <section class="area-login">
+    <div class="login"> <!-- div principal-->
+
+        <div class="text">
+            <h1>Login</h1>
+        </div>
+
+        <div class="img"><!--div da logo-->
+        
+            <img src="assets/img/www.png" aria-label="icone do gatinho"/>
+         </div> 
+
+        <form>
+
+            <label for="email"></label>
+            <input type="email" name="email" id="email" onchange=" validateFields()" placeholder="seu@email.com">
+            
+            <label for="password"></label>
+            <input type="password" name="password" id="password"  onchange=" validateFields()" placeholder="senha"  >
+
+
+
+
+            <!-- tive de transformar em botoes pra consegui fazer as funçoes de login etc -->
+            <button type="button" class= "solid" id="login-button" onclick="login()">entrar</button>
+            <br>
+            <button type="button" class= "solid" id="register-account-button" onclick="register()" >criar uma conta</button>
+            <button type="button" class= "solid" id="recover-password-button" onclick="recoverPassword()" >recuperar senha</button>
+
+
+        </form>
+    
+
+
+
+        
+    </div>
+    
+    </section>  
+    <script src="assets/js/validate.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src= "https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src= "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>
+    <script> 
+        const firebaseConfig = {
+            apiKey: "AIzaSyDhW8FzV5bSALH5v_8l_Rqt9cgTenP2FVk",
+            authDomain: "codpet-6cdf5.firebaseapp.com",
+            projectId: "codpet-6cdf5",
+            storageBucket: "codpet-6cdf5.appspot.com",
+            messagingSenderId: "682851420307",
+            appId: "1:682851420307:web:ca2a6a5bf3f17892736566"
+        };  
+        firebase.initializeApp(firebaseConfig); 
+        </script>
+    </script>
+</body><!-- corpo-->
+
+</html>
