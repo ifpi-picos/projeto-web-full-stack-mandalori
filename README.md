@@ -20,7 +20,7 @@ localização de animais perdidos*
 * Next
 * Mysql
 
-##### Arquitetura e docuemntação
+##### Arquitetura e documentação
 
 [https://drive.google.com/file/d/1A1IuCPVaw2MuH8xy0eZrL5aIQPSwEJOH/view?usp=sharing](drive "arquivos")
 
