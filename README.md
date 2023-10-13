@@ -19,6 +19,8 @@ localização de animais perdidos*
 * Nodejs
 * Next
 * Mysql
+* react
+* JavaScript
 
 ##### Arquitetura e documentação
 
