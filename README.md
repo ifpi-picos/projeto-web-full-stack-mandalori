@@ -28,6 +28,6 @@ localização de animais perdidos*
 
 ##### **Integração e segurança entre front e back**
 
-* Autenticação e Autorização
-* HTTPS
-* Atualizações regulares
+* Autenticação e Autorização;
+* HTTPS;
+* Atualizações regulares.
