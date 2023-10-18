@@ -1,11 +1,10 @@
-# para roda o projeto 
+# para roda o projeto
 
 ## lado back-end
 
-#### bibliotecas: 
-`npm i --save bcrypt body-parser cookie-parser cors dotenv express jsonwebtoken multer my sql`
+#### bibliotecas:
 
-#
+`npm i --save bcrypt body-parser cookie-parser cors dotenv express jsonwebtoken multer mysql`
 
 :: comandos para criar o banco de dados utilizado na aplicação
 
@@ -17,7 +16,7 @@ use rede_social;
 
 create table `rede_social`. `user` (
 	`id` int not null auto_increment,
-    `username` varchar(45) not null, 
+    `username` varchar(45) not null,
     `email` varchar(100) not null,
     `password` varchar(200) null,
     `userImg` varchar(300) null,
@@ -62,27 +61,26 @@ create table `rede_social`. `comments` (
     references `rede_social`.`posts`(`id`)
     on delete cascade
     on update cascade
-    
+
 ) auto_increment=1;
 
 create table rede_social. likes (
- id int not null auto_increment, 
- likes_user_id int not null, 
- likes_post_id int not null, 
- primary key (id), 
- constraint likes_user_id 
- foreign key (likes_user_id) 
- references rede_social.user(id) 
- on delete cascade 
- on update cascade, 
- constraint likes_post_id 
- foreign key (likes_post_id) 
- references rede_social.posts(id) 
- on delete cascade 
+ id int not null auto_increment,
+ likes_user_id int not null,
+ likes_post_id int not null,
+ primary key (id),
+ constraint likes_user_id
+ foreign key (likes_user_id)
+ references rede_social.user(id)
+ on delete cascade
+ on update cascade,
+ constraint likes_post_id
+ foreign key (likes_post_id)
+ references rede_social.posts(id)
+ on delete cascade
  on update cascade
 
 ) auto_increment=1;
-
 
 create table `rede_social`. `friendship` (
 	`id` int not null auto_increment,
@@ -99,24 +97,23 @@ create table `rede_social`. `friendship` (
     references `rede_social`.`user`(`id`)
     on delete cascade
     on update cascade
-    
+
 ) auto_increment=1;
 
-### para rodar a api 
+### para rodar a api
 
 crie um arquivo `.env` com os dados do mysql da sua maquina (os tokens se mantem)
 
-DB_HOST = 
-DB_USER = 
-DB_PASS = 
-DB = 
-REFRESH = HeVg3IIIxPSKLr+viDrvFZ+wyYWLs7MmmiYfWcjkZq6iu7Fsygf4/8kgKY/UAInV95ossTd2aV8+RMx6lFILcSDId/pulf5/1lbwtMkFTxIacl/bdefyDZMezlNsQxiqF/dgLquG90B1rEekm/s2gbevucNVMAxk9TgFnLftbBdRuTclOIt/pJJZKyZJa/wExqkjyxDBWmtHM8QNdiSuONo+WYzqELKM30HZuCq1CwbvR6oB0vz2D0WJp2jtvC76b9QFDQWCYON7VlOpV30kyCG9aXc476nzo8yB66R3vZGxnE65D5neN+RkaILDjtdm4rQVVcCatFtK3aZbof6pzA== 
+DB_HOST =
+DB_USER =
+DB_PASS =
+DB =
+REFRESH = HeVg3IIIxPSKLr+viDrvFZ+wyYWLs7MmmiYfWcjkZq6iu7Fsygf4/8kgKY/UAInV95ossTd2aV8+RMx6lFILcSDId/pulf5/1lbwtMkFTxIacl/bdefyDZMezlNsQxiqF/dgLquG90B1rEekm/s2gbevucNVMAxk9TgFnLftbBdRuTclOIt/pJJZKyZJa/wExqkjyxDBWmtHM8QNdiSuONo+WYzqELKM30HZuCq1CwbvR6oB0vz2D0WJp2jtvC76b9QFDQWCYON7VlOpV30kyCG9aXc476nzo8yB66R3vZGxnE65D5neN+RkaILDjtdm4rQVVcCatFtK3aZbof6pzA==
 TOKEN = eOhy5z55cHsxmxGUeXTRQHlVoEwo/Z+bXqwI06yqDwZ092tWJsepvtMkrZQpHYg+iZazQHUsxinS3+YnLS7068XEjjgzgTds9A1+wkmfcl6kU+bADO2XD7rYKSrjZw/UX60Rb6F2b2mkG4qizdluJalr86a4RiT8eIwV4AmGflvZwnq9RFwmNjEtXiomFMSYTu41SK35axNwuK+rnSdMH4YfrYB3wAJohBWwy51jvJkiLUQII7vhAY/9/AAdQaL//awOC9StE6lPvEASJa9mdj7+uVLfUMdlP2ggUo0i2nCcwJpwwkdyEFSpQacfVGKMhZSsvxSsd+v0H0N8O2sdJg==
 
 e de o comando: `npm run start`
-#
 
-## lado back-end
+## lado front-end
 
 você precisa instalar as bibliotecas uutilizadas basta apenas usar esse comando dentro da pasta rede
 
@@ -130,16 +127,13 @@ depois na mesma pasta rode o comando
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
-#
 # script linux
 
 ## back-api
 
-`yarn add bcrypt body-parser cookie-parser cors dotenv express jsonwebtoken multer my sql --save`
+`yarn add bcrypt body-parser cookie-parser cors dotenv express jsonwebtoken multer mysql`
 
 `yarn start`
-
 
 ## front-client
 
@@ -153,7 +147,6 @@ mostra a porta usada e o pid dela
 
 `sudo lsof -i :8001`
 
-mata o pid antigo da porta e faz um novo 
+mata o pid antigo da porta e faz um novo
 
 `sudo kill -9 PID`
-
