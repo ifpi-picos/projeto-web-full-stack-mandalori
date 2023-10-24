@@ -1,38 +1,21 @@
 "use client"
 
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { makeRequest } from "../../../../axios"
 import Feed from "@/app/components/Feed"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "@/context/UserContext";
+import { useRouter } from "next/navigation";
+import {IFriendship, IPost} from '@/interfaces'
 
-interface IPost {
-    id: number;
-    post_desc: string;
-    img: string;
-    username: string;
-    userImg: string;
-    created_at: string;
-    userId: number;
-}
-
-
-interface IPost {
-    id: number;
-    post_desc: string;
-    img: string;
-    username: string;
-    userImg: string;
-    created_at: string;
-}
 
 
 function Profile({searchParams}:{searchParams: {id:string} })
 {
-
-
     const {user} = useContext(UserContext)
+    const queryClient = useQueryClient();
 
+    const [followed, setFollowed] = useState(false)
 
     const profileQuery = useQuery({
         queryKey:['profile', searchParams.id],
@@ -56,6 +39,47 @@ function Profile({searchParams}:{searchParams: {id:string} })
         console.log(postQuery.error);
     }
 
+    const friendshipQuery = useQuery({
+        queryKey:[`friendship`], 
+        queryFn:()=> makeRequest.get('friendship/?follower_id=' + user?.id).then((res)=>{
+            res.data.data.find((e: IFriendship)=>{
+                if(e.followed_id === + searchParams.id)
+                setFollowed(true)
+            })
+            return res.data.data;
+        })
+    })
+    
+    if(friendshipQuery.error){
+        console.log(friendshipQuery.error)
+    }
+
+
+    const mutation = useMutation({
+        mutationFn: (unfollow:{
+            followed_id: number;
+            follower_id: number; 
+            followed: boolean;
+        }) =>  {
+            if(followed){
+            return makeRequest.
+            delete(`friendship/?follower_id=${unfollow.follower_id}&followed_id=${unfollow.followed_id}`)
+        .then((res)=> res.data)}
+        else{
+            return makeRequest.post(`friendship/`, {follower_id:unfollow.follower_id, followed_id: unfollow.followed_id, })
+            .then((res)=> res.data)
+        }
+    }, 
+        onSuccess: () => {
+            setFollowed(false)
+          queryClient.invalidateQueries({queryKey:['']})
+        },
+      })
+
+      
+
+
+ 
 
     return(
         <div className="w-3/5 flex flex-col items-center">
@@ -69,13 +93,15 @@ function Profile({searchParams}:{searchParams: {id:string} })
                 <span className="text-2m font-bold pl-2">{profileQuery.data?.username}</span>
             </div>
         </div>
-        <div className="pt-36 w-3/5" >{
-            
+        <div className="pt-36 w-3/5 flex flex-col items-center gap-3" > 
+        {
             user?.id != + searchParams.id &&(
-            <button className="px-2 py-1 bg-zinc-300 font-semibold rounded-md hover:text-black" >deixar de seguir</button>
-            )
-        }
-
+            <button onClick={()=> user && mutation.mutate(
+                {followed, followed_id: + searchParams.id, follower_id:user.id})} 
+                className={`w-1/2 rounded-md py-2 font-semibold ${followed? 
+                    `bg-zinc-300  hover:text-black`:`bg-green-600 text-white hover:bg-green-700`}`} >
+                        {followed? "deixar de seguir" : "seguir"}</button>
+            )}
             <Feed post={postQuery.data}/>
         </div>
     </div>
@@ -84,3 +110,6 @@ function Profile({searchParams}:{searchParams: {id:string} })
 
 
 export default Profile;
+
+
+ 

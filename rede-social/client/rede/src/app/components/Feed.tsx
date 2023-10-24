@@ -1,17 +1,7 @@
 "use client"
 
 import Post from "./Post";
-
-
-interface IPost {
-    id: number;
-    post_desc: string;
-    img: string;
-    username: string;
-    userImg: string;
-    created_at: string;
-    userId: number;
-}
+import { IPost } from "@/interfaces";
 
 function Feed(props:{post:IPost[]|undefined}) {
 

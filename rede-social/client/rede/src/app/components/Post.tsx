@@ -10,39 +10,8 @@ import { makeRequest } from "../../../axios";
 import UserContext from "@/context/UserContext";
 import Comment from "./Comment";
 import Link from "next/link";
+import { IPost, IComments, ILikes, IUser } from "@/interfaces";
 
-interface IPost{
-    id: number;
-    post_desc: string;
-    img: string;
-    username: string;
-    userImg: string;
-    created_at: string;
-    userId:number;
-}
-
-interface IUser{
-    userImg: string;
-    username: string;
-}
-
-interface IComments{
-    id: number;
-    comment_desc: string;
-    userImg: string;
-    comment_user_id: number;
-    username: string;
-    post_id: number;
-    created_at: string;
-
-}
-
-interface ILikes{
-    id: number;
-    likes_user_id: number;
-    username: string;
-    likes_post_id: number;
-}
 
 function Post(props:{post: IPost}) {
 

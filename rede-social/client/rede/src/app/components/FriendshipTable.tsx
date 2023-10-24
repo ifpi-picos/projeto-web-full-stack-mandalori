@@ -3,15 +3,8 @@ import { makeRequest } from "../../../axios";
 import { useContext } from "react";
 import UserContext from "@/context/UserContext";
 import Link from "next/link";
+import {IFriendship} from '@/interfaces'
 
-
-interface IFriendship{
-    id: number,
-    follower_id: number
-    followed_id: number
-    username: string
-    userImg: string
-}
 
 
 function Friendshiptable() {
@@ -21,10 +14,11 @@ function Friendshiptable() {
     const queryClient = useQueryClient()
 
     const {data, error} = useQuery({
-        queryKey:[`friendship-${user?.id}`], 
+        queryKey:[`friendship`], 
         queryFn:()=> makeRequest.get('friendship/?follower_id=' + user?.id).then((res)=>{
             return res.data.data;
-        })
+        }),
+        enabled: !!user
     })
     
     if(error){
@@ -44,7 +38,7 @@ function Friendshiptable() {
 
 
     return (    
-        <div className="w-1/6 mr-4 text-gray-600 flex flex-col gap-4">
+        <div className="fixed right-0 w-1/6 mr-4 text-gray-600 flex flex-col gap-4">
             <span className="font-bold border-b">seguindo</span>
             {data?.map((friendship: IFriendship)=>{
                 return (
@@ -56,7 +50,10 @@ function Friendshiptable() {
                         className="u-8 h-8 rounded-full" />
                         <span className="font-bold">{friendship.username}</span>
                         </Link>
-                        <button onClick={()=>user && mutation.mutate({followed_id: friendship.followed_id, follower_id:user?.id})} className="px-2 py-1 bg-zinc-300 font-semibold rounded-md hover:text-black" >deixar de seguir</button>
+                        <button onClick={()=>user && mutation.mutate({followed_id: friendship.followed_id, follower_id:user?.id})} className="px-2 py-1 bg-zinc-300 font-semibold rounded-md hover:text-black" >
+        
+                            
+                            deixar de seguir</button>
                     </div>
                 )
             })}

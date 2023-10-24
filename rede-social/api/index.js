@@ -34,10 +34,11 @@ app.use(cookieParser())
 app.use('/api/users/', userRouter);
 app.use('/api/auth/', authRouter);
 app.use('/api/post/', postRouter);
-app.use('/api/upload/', uploadRouter);
-app.use('/api/comment/', commentRouter)
 app.use('/api/likes/', likesRouter)
 app.use('/api/friendship/', friendshipRouter)
+app.use('/api/upload/', uploadRouter);
+app.use('/api/comment/', commentRouter)
+
 
 app.listen(8001, () =>{
     console.log('servidor rodando na porta 8001')

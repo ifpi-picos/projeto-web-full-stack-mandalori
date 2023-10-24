@@ -16,18 +16,21 @@ localização de animais perdidos*
 
 ##### Tecnologias
 
-* Nodejs
-* Next
-* Mysql
-* react
-* JavaScript
+* *Nodejs*
+* *Next*
+* *Mysql*
+* *react*
+* *JavaScript*
 
 ##### Arquitetura e documentação
 
 [https://drive.google.com/file/d/1A1IuCPVaw2MuH8xy0eZrL5aIQPSwEJOH/view?usp=sharing](drive "arquivos")
 
+* *MVC;*
+* *divisão por funcionalidade.*
+
 ##### **Integração e segurança entre front e back**
 
-* Autenticação e Autorização;
-* HTTPS;
+* *Autenticação e Autorização;*
+* *HTTPS.*
 * Atualizações regulares.
