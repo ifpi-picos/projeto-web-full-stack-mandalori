@@ -9,4 +9,4 @@ router.post('/', checkToken, addFriendship)
 router.get('/', checkToken, getFriendship)
 router.delete('/', checkToken, deleteFriendship)
 
-export default router;4
+export default router;

@@ -3,6 +3,7 @@ import userRouter from './routes/user.js';
 import authRouter from './routes/auth.js';
 import postRouter from './routes/post.js';
 import likesRouter from './routes/likes.js';
+import searchRouter from './routes/search.js';
 import commentRouter from './routes/comment.js';
 import uploadRouter from './routes/upload.js'
 import friendshipRouter from './routes/friendship.js'
@@ -36,6 +37,7 @@ app.use('/api/auth/', authRouter);
 app.use('/api/post/', postRouter);
 app.use('/api/likes/', likesRouter)
 app.use('/api/friendship/', friendshipRouter)
+app.use('/api/search/', searchRouter)
 app.use('/api/upload/', uploadRouter);
 app.use('/api/comment/', commentRouter)
 

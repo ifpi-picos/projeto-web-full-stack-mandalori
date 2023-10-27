@@ -17,8 +17,9 @@ export interface IFriendship{
 }
 
 export interface IUser{
-    userImg: string;
+    id: number;
     username: string;
+    userImg: string;
 }
 
 export interface IComments{

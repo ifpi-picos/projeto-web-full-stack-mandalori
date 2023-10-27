@@ -37,9 +37,9 @@ create table `rede_social`. `posts` (
     references `rede_social`.`user`(`id`)
     on delete cascade
     on update cascade
-) auto_increment=1;user
+) auto_increment=1;
 
-alter table posts add created_at timestamp default current_timestamp
+alter table posts add ;
 
 create table `rede_social`. `comments` (
 	`id` int not null auto_increment,
@@ -124,7 +124,10 @@ depois na mesma pasta rode o comando
 
 `npm run dev`
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+
+#
 # script linux
 
 ## back-api
