@@ -31,8 +31,8 @@ function Header() {
 
 
     return(
-        <header className="w-full bg-white flex justify-between py-2 px-4 items-center shadow-md" >
-            <Link href='/' className="font-bold text-sky-900 text-lg">codpet</Link>
+        <header className=" fixed z-10 w-full bg-white flex justify-between py-2 px-4 items-center shadow-md" >
+            <Link href='/main' className="font-bold text-sky-900 text-lg">codpet</Link>
             <div className="flex bg-zinc-100 items-center text-gray-600 px-3 py-1 rounded-full">
                 <input type="text" placeholder='pesquisar' className="bg-zinc-100 focus-visible:outline-none"/>
                 <FaSearch/>

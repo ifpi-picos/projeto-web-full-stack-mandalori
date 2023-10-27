@@ -1,3 +1,5 @@
+"use client"
+
 import UserContext from "@/context/UserContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useContext, useState, useEffect } from "react";
@@ -17,9 +19,7 @@ function Share() {
     useEffect(()=>{
         if(img){
             setPostImg(URL.createObjectURL(img))
-        }
-
-    }, [img]);
+        }}, [img]);
 
     const mutation = useMutation({
         mutationFn: async(newPost:{}) =>{
@@ -55,9 +55,9 @@ function Share() {
 
 
     return(
-    <div className="w-1/3 bg-white rounded-lg p-4 shadow-md flex flex-col gap-3">
+    <div className="w-full bg-white rounded-lg p-4 shadow-md flex flex-col gap-3">
         {
-            img && <img className="rounded-lg" src={postImg} alt="img do post"></img>
+            img && <img className="rounded-full" src={postImg} alt="img do post"></img>
         }
         <div>                    
             <div className="flex gap-4 pt-6">
@@ -80,8 +80,8 @@ function Share() {
         <div className="flex justify-around py-4 text-gray-600 border-y">
             <input className="hidden" type='file' id='img' onChange={(e)=> e.target.files && setImg(e.target.files[0])} />
             <label htmlFor="img" className="flex">
-            <TbPhoto classname= 'text-2xl'/>imagem</label>
-            <button className="flex items-center gap-1"><FaUserFriends classname= 'text-2xl'/>marcar amigo</button>   
+            <TbPhoto className= 'text-2xl'/>imagem</label>
+            <button className="flex items-center gap-1"><FaUserFriends className= 'text-2xl'/>marcar amigo</button>   
         </div>
 
 

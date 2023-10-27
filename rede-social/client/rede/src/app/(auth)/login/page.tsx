@@ -22,8 +22,9 @@ function Login() {
             localStorage.setItem('rede: user', JSON.stringify(res.data.user));
             setUser(res.data.user)
             setError('')
-            router.push('/')
-        }).catch((err)=>{
+            router.push('/main')
+        })
+        .catch((err)=>{
             console.log(err)
             setError(err.response.data.msg)
         })

@@ -1,14 +1,10 @@
+
 import UserContext from "@/context/UserContext";
 import Link from "next/link";
 import {useContext, useEffect, useState } from "react";
 import { FaAlignLeft, FaCalendar, FaFlag, FaHeart, FaPeopleArrows, FaStore, FaUserFriends } from "react-icons/fa";
 import { TbDeviceImac, TbClockHour4 } from 'react-icons/tb'
-
-interface IUser{
-    userImg: string,
-    username: string
-}
-
+import { IUser } from "@/interfaces";
 
 
 
@@ -19,9 +15,9 @@ function Sidebar() {
     return(
 
         //tag mto utilizada pra side bar
-        <aside className="pl-4">
-            <nav className="flex flex-col gap-6 text-gray-600 font-semibold">
-                <Link href='' className="flex-gap-2 pb-6 items-center">
+        <aside className="fixed w-1/6 pl-4">
+            <nav className=" flex flex-col gap-6 text-gray-600 font-semibold">
+                <Link href={'/profile?id='+ user?.id }  className="flex-gap-2 pb-6 items-center">
                     <img 
                         src={user?.userImg? user.userImg: 'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'} 
                         alt="imagem do perfil" 

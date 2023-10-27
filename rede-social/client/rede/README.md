@@ -3,7 +3,7 @@
 ## lado back-end
 
 #### bibliotecas: 
-`npm i --save bcrypt body-parser cookie-parser cors dotenv express jsonwebtoken multer my sql`
+`npm i --save bcrypt body-parser cookie-parser cors dotenv express jsonwebtoken multer mysql`
 
 #
 
@@ -25,24 +25,21 @@ create table `rede_social`. `user` (
 ) auto_increment=1;
 
 
-update `user`
-set userImg = 'https://upload.wikimedia.org/wikipedia/pt/d/d7/Cassiano.jpg'
-where `id` = 1;
-
 create table `rede_social`. `posts` (
 	`id` int not null auto_increment,
     `post_desc` varchar(200) null,
     `img` varchar(300) null,
     `userId` int not null,
+    `created_at` timestamp default current_timestamp,
     primary key (`id`),
     constraint `userId`
     foreign key (`userId`)
     references `rede_social`.`user`(`id`)
     on delete cascade
     on update cascade
-) auto_increment=1;user
+) auto_increment=1;
 
-alter table posts add created_at timestamp default current_timestamp
+alter table posts add ;
 
 create table `rede_social`. `comments` (
 	`id` int not null auto_increment,
@@ -82,6 +79,25 @@ create table rede_social. likes (
 
 ) auto_increment=1;
 
+
+create table `rede_social`. `friendship` (
+	`id` int not null auto_increment,
+    `follower_id` int not null,
+    `followed_id` int not null,
+    primary key (`id`),
+    constraint `follower_id`
+    foreign key (`follower_id`)
+    references `rede_social`.`user`(`id`)
+    on delete cascade
+    on update cascade,
+	constraint `followed_id`
+    foreign key (`followed_id`)
+    references `rede_social`.`user`(`id`)
+    on delete cascade
+    on update cascade
+    
+) auto_increment=1;
+
 ### para rodar a api 
 
 crie um arquivo `.env` com os dados do mysql da sua maquina (os tokens se mantem)
@@ -96,7 +112,7 @@ TOKEN = eOhy5z55cHsxmxGUeXTRQHlVoEwo/Z+bXqwI06yqDwZ092tWJsepvtMkrZQpHYg+iZazQHUs
 e de o comando: `npm run start`
 #
 
-## lado back-end
+## lado front-end
 
 você precisa instalar as bibliotecas uutilizadas basta apenas usar esse comando dentro da pasta rede
 
@@ -130,8 +146,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 #### se der o.b na porta o bag resolve
 
 mostra a porta usada e o pid dela
+
 `sudo lsof -i :8001`
 
 mata o pid antigo da porta e faz um novo 
+
 `sudo kill -9 PID`
 

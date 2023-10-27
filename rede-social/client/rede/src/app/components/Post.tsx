@@ -1,3 +1,5 @@
+"use client"
+
 import { create } from "domain";
 import { useContext, useEffect, useState } from "react";
 import { FaPaperPlane, FaRegComment, FaThumbsUp } from "react-icons/fa";
@@ -7,43 +9,14 @@ import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/rea
 import { makeRequest } from "../../../axios";
 import UserContext from "@/context/UserContext";
 import Comment from "./Comment";
+import Link from "next/link";
+import { IPost, IComments, ILikes, IUser } from "@/interfaces";
 
-interface IPost{
-    id: number;
-    post_desc: string;
-    img: string;
-    username: string;
-    userImg: string;
-    created_at: string;
-}
-
-interface IUser{
-    userImg: string;
-    username: string;
-}
-
-interface IComments{
-    id: number;
-    comment_desc: string;
-    userImg: string;
-    comment_user_id: number;
-    username: string;
-    post_id: number;
-    created_at: string;
-
-}
-
-interface ILikes{
-    id: number;
-    likes_user_id: number;
-    username: string;
-    likes_post_id: number;
-}
 
 function Post(props:{post: IPost}) {
 
 
-    const{post_desc, img, username, userImg, created_at, id} = props.post
+    const{post_desc, img, username, userImg, created_at, id, userId} = props.post
 
     const {user} = useContext(UserContext)
     const [comment_desc, setComment_desc] = useState('')
@@ -135,8 +108,9 @@ function Post(props:{post: IPost}) {
     }
     
     return (
-        <div className="w-1/3 bg-white rounded-lg p-4 shadow-md">
+        <div className="w-full bg-white rounded-lg p-4 shadow-md">
             <header className="flex gap-2 pb-4 border-b items-center">
+                <Link href={'/profile?id=' + userId}>
                 <img 
                 className="w-8 h-8 rounded-full" 
                 src={
@@ -149,9 +123,8 @@ function Post(props:{post: IPost}) {
                         <span className="font-semibold">{username}</span>
                         <span className="text-xs">{moment(created_at).fromNow()}</span>
                     </div>
+                    </Link>
                     </header>
-
-
 
 
                     {post_desc && (
