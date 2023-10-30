@@ -64,7 +64,7 @@ function Share() {
         <img 
             src={user?.userImg? user.userImg: 'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'} 
             alt="imagem do perfil" 
-            className="u-8 h-8 rounded full"  />
+            className="u-8 h-8 rounded-full"  />
         
         <div className="w-full bg-zinc-100 flex items-center text-gray rounded-full">
             <input placeholder= {`o que esta acontecendo, ${user?.username}?`} 

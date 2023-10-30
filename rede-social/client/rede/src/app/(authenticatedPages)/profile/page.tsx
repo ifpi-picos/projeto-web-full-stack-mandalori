@@ -18,7 +18,7 @@ function Profile({searchParams}:{searchParams: {id:string} })
     const [followed, setFollowed] = useState(false)
 
     const profileQuery = useQuery({
-        queryKey:['profile', searchParams.id],
+        queryKey:['profile'],
         queryFn:()=> makeRequest.get('users/get-user?id=' + searchParams.id).then((res)=>{
             return res.data[0]
         }),
@@ -42,44 +42,40 @@ function Profile({searchParams}:{searchParams: {id:string} })
     const friendshipQuery = useQuery({
         queryKey:[`friendship`], 
         queryFn:()=> makeRequest.get('friendship/?follower_id=' + user?.id).then((res)=>{
-            res.data.data.find((e: IFriendship)=>{
-                if(e.followed_id === + searchParams.id)
-                setFollowed(true)
+            res.data.data.find((e:IFriendship)=> {
+                if(e.followed_id === + searchParams.id){
+                    setFollowed(true)
+                }
             })
             return res.data.data;
-        })
+        }),
     })
+
     
     if(friendshipQuery.error){
         console.log(friendshipQuery.error)
     }
 
-
     const mutation = useMutation({
-        mutationFn: (unfollow:{
-            followed_id: number;
-            follower_id: number; 
-            followed: boolean;
-        }) =>  {
-            if(followed){
-            return makeRequest.
-            delete(`friendship/?follower_id=${unfollow.follower_id}&followed_id=${unfollow.followed_id}`)
-        .then((res)=> res.data)}
-        else{
-            return makeRequest.post(`friendship/`, {follower_id:unfollow.follower_id, followed_id: unfollow.followed_id, })
-            .then((res)=> res.data)
-        }
-    }, 
+        mutationFn: (unfollow: { followed_id: number; follower_id: number; followed: boolean }) => {
+          if (followed) {
+            return makeRequest
+              .delete(
+                `friendship/?follower_id=${unfollow.follower_id}&followed_id=${unfollow.followed_id}`
+              )
+              .then((res) => res.data);
+          } else {
+            return makeRequest
+              .post(`friendship/`, { follower_id: unfollow.follower_id, followed_id: unfollow.followed_id })
+              .then((res) => res.data);
+          }
+        },
         onSuccess: () => {
             setFollowed(false)
-          queryClient.invalidateQueries({queryKey:['']})
+          queryClient.invalidateQueries({ queryKey: ['friendship'] });
         },
-      })
-
+      });
       
-
-
- 
 
     return(
         <div className="w-3/5 flex flex-col items-center">
@@ -97,9 +93,10 @@ function Profile({searchParams}:{searchParams: {id:string} })
         {
             user?.id != + searchParams.id &&(
             <button onClick={()=> user && mutation.mutate(
-                {followed, followed_id: + searchParams.id, follower_id:user.id})} 
+                {followed, followed_id: + searchParams.id, follower_id:user.id})
+            } 
                 className={`w-1/2 rounded-md py-2 font-semibold ${followed? 
-                    `bg-zinc-300  hover:text-black`:`bg-green-600 text-white hover:bg-green-700`}`} >
+                    `bg-zinc-300  hover:text-black`:`bg-blue-600 text-white hover:bg-blue-700`}`} >
                         {followed? "deixar de seguir" : "seguir"}</button>
             )}
             <Feed post={postQuery.data}/>

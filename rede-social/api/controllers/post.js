@@ -16,6 +16,7 @@ export const createPost = (req, res) =>{
         }
     })
 }
+
 export const getPost = (req, res)=>{
 
     if(req.query.id){

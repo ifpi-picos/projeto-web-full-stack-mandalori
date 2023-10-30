@@ -1,10 +1,9 @@
 
 import UserContext from "@/context/UserContext";
 import Link from "next/link";
-import {useContext, useEffect, useState } from "react";
-import { FaAlignLeft, FaCalendar, FaFlag, FaHeart, FaPeopleArrows, FaStore, FaUserFriends } from "react-icons/fa";
-import { TbDeviceImac, TbClockHour4 } from 'react-icons/tb'
-import { IUser } from "@/interfaces";
+import {useContext} from "react";
+import { FaAlignLeft, FaCalendar, FaFlag, FaHeart, FaStore, FaUserFriends } from "react-icons/fa";
+
 
 
 
@@ -28,7 +27,6 @@ function Sidebar() {
                 <Link href='' className="flex gap-3"> <FaUserFriends className='w-6 h-6'/>amigos</Link>
                 <Link href='' className="flex gap-3"> <FaAlignLeft className='w-6 h-6' />feed</Link>
                 <Link href='' className="flex gap-3"> <FaStore className='w-6 h-6' />store</Link>
-                {/* funcionar igual o salvos */}
                 <Link href='' className="flex gap-3" > <FaHeart className='w-6 h-6' />favoritos</Link> 
                 <Link href='' className="flex gap-3" > <FaFlag className='w-6 h-6' />paginas</Link>
                 <Link href='' className="flex gap-3" > <FaCalendar className='w-6 h-6' />eventos</Link>

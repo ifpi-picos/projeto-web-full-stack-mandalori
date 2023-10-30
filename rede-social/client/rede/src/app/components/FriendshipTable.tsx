@@ -7,7 +7,7 @@ import {IFriendship} from '@/interfaces'
 
 
 
-function Friendshiptable() {
+function FriendshipTable() {
 
 
     const {user} = useContext(UserContext)
@@ -20,45 +20,47 @@ function Friendshiptable() {
         }),
         enabled: !!user
     })
+
     
     if(error){
         console.log(error)
     }
 
-
     const mutation = useMutation({
-        mutationFn: (unfollow:{followed_id: number; follower_id: number}) =>  
-        makeRequest.delete(`friendship/?follower_id=${unfollow.follower_id}&followed_id=${unfollow.followed_id}`)
-        .then((res)=> res.data), 
+        mutationFn: (unfollow: { followed_id: number; follower_id: number }) =>
+          makeRequest
+            .delete(
+              `friendship/?follower_id=${unfollow.follower_id}&followed_id=${unfollow.followed_id}`
+            )
+            .then((res) => res.data),
         onSuccess: () => {
-          queryClient.invalidateQueries({queryKey:['']})
+          queryClient.invalidateQueries({ queryKey: ['friendship'] });
         },
+      });
       
-      })
 
 
     return (    
-        <div className="fixed right-0 w-1/6 mr-4 text-gray-600 flex flex-col gap-4">
-            <span className="font-bold border-b">seguindo</span>
-            {data?.map((friendship: IFriendship)=>{
-                return (
-                    <div key={friendship.id} className="flex gap-2 items-center justify-between">
-                        <Link href={`profile?id=${friendship.followed_id}`} className="flex gap-2 items-center">
-                        <img 
-                        src={friendship.userImg? friendship.userImg: 'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'} 
-                        alt="imagem do perfil" 
-                        className="u-8 h-8 rounded-full" />
-                        <span className="font-bold">{friendship.username}</span>
-                        </Link>
-                        <button onClick={()=>user && mutation.mutate({followed_id: friendship.followed_id, follower_id:user?.id})} className="px-2 py-1 bg-zinc-300 font-semibold rounded-md hover:text-black" >
-        
-                            
-                            deixar de seguir</button>
-                    </div>
-                )
-            })}
-        </div>
+            <div className="fixed right-0 w-1/6 mr-4 text-gray-600 flex flex-col gap-4">
+                <span className="font-bol border-b">seguindo</span>
+                {data?.map((friendship: IFriendship)=>{
+                    return (
+                        <div key={friendship.id} className="flex gap-2 items-center justify-between">
+                        <Link href={`profile?id=${friendship.followed_id}`} className="flex gap-2 items-center" >   
+                            <img src={friendship.userImg ? 
+                            friendship.userImg: 
+                            'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'
+                        } 
+                            alt="imagem do perfil" 
+                            className="w-8 h-8 rounded-full" />
+                            <span className="font-bold">{friendship.username}</span></Link> 
+                            <button onClick={()=> user && 
+                                mutation.mutate({followed_id: friendship.followed_id, follower_id: user?.id, })} className="px-2 py-1 bg-zinc-200 font-semibold rounded-md hover:text-black">unfollow</button>
+                        </div>
+                    )
+                })}
+            </div>
         )
 }
 
-export default Friendshiptable;
+export default FriendshipTable;

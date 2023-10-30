@@ -27,6 +27,7 @@ export default function MainHome({children}:{children: ReactNode}) {
   if (isSuccess){
     console.log(data.msg)
   }
+  
   if(isError){
     console.log(error)
     router.push('/login')
