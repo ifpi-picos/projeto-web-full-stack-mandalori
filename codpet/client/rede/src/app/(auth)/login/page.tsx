@@ -31,16 +31,16 @@ function Login() {
     }
 
     return (
-        <> 
-            <title>login</title>
+            <>
+                <title>login</title>
                 <h1 className="font-bold text-2lx">login</h1>
-                <AuthInput label="email: " newState={setEmail}/>
-                <AuthInput label="senha: " newState={setPassword} isPassword/>
-                {error.length>0 && <span className="text-red-600">* {error}</span>}
-                <button className="bg-blue-400 py-3 font-bold text-white rounded-lg hover:bg-blue-600" 
-                onClick={(e)=>handleLogin(e)}>entrar</button>
+                <AuthInput label="email: " newState={setEmail} />
+                <AuthInput label="senha: " newState={setPassword} isPassword />
+                {error.length > 0 && <span className="text-red-600">* {error}</span>}
+                <button className="bg-[#4e77ad] py-3 font-bold text-white rounded-lg hover:bg-[#365378]"
+                    onClick={(e) => handleLogin(e)}>entrar</button>
                 <Link href='/register' className="text-center underline">criar uma conta</Link>
-        </>
+            </>
     )
 }
 

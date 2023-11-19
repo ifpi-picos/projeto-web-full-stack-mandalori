@@ -42,7 +42,7 @@ function Register(){
         <AuthInput label="confirme sua senha" newState={setConfirmPassword}isPassword/>
         {error.length>0 && <span className="text-red-600">* {error}</span>}
         {sucess.length>0 && <span className="text-green-600">* {sucess}</span>}
-        <button className="bg-blue-400 py-3 font-bold text-white rounded-lg hover:bg-blue-600" 
+        <button className="bg-[#4e77ad] py-3 font-bold text-white rounded-lg hover:bg-[#365378]"
                 onClick={(e)=>handleRegister(e)}>cadastrar</button>
                 <Link href='/login' className="text-center underline">logar</Link>
         </>

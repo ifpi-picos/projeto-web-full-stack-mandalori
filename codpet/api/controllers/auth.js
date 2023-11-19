@@ -148,3 +148,18 @@ export const logout = (req, res) =>{
     .clearCookie('refreshToken', {secure: true, sameSite: 'none'})
     .status(200).json({msg: 'logout efetuado com sucesso'});
 }
+
+
+
+export const deleteUser = (req, res) => {
+    const userId = req.user.id; // assumindo que você tenha um middleware que define req.user após a autenticação
+  
+    db.query('DELETE FROM user WHERE id = ?', [userId], (error) => {
+      if (error) {
+        console.log(error);
+        return res.status(500).json({ msg: 'erro no servidor' });
+      } else {
+        return res.status(200).json({ msg: 'usuário excluído com sucesso' });
+      }
+    });
+  };
