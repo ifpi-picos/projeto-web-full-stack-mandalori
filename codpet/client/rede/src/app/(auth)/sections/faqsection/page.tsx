@@ -10,6 +10,7 @@ const faqStyle = {
   function Section() {
     return (
       <div>
+        <title>perguntas frequentes</title>
         <details aria-expanded={true} className="faq_panel" open>
           <summary className="faq_label"><strong>Proposta do Sistema</strong></summary>
           <div className="faq_panel-body">

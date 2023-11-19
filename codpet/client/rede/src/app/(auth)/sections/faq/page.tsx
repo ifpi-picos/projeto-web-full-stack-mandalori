@@ -7,9 +7,10 @@ const faqPanelStyle = {
   marginBottom: '10px',
 };
 
-function FAQ() {
+function Faq() {
   return (
     <div>
+      <title>faq</title>
       <details aria-expanded={true} className="faq_panel" open>
         <summary className="faq_label"><strong>Origem</strong></summary>
           
@@ -63,4 +64,4 @@ function FAQ() {
   );
 }
 
-export default FAQ;
+export default Faq;
