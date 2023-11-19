@@ -34,3 +34,11 @@ localização de animais perdidos*
 * *Autenticação e Autorização;*
 * *HTTPS.*
 * Atualizações regulares.
+
+##### Outros repositorios onde trabalhos para o projeto
+
+https://github.com/danieluau/rede
+
+https://github.com/joyzinhw/frontrede
+
+https://github.com/joyzinhw/testesjestcodpet
