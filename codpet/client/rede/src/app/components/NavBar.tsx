@@ -1,5 +1,7 @@
 import React from 'react';
-import { FaHome } from 'react-icons/fa'; // Importe o ícone desejado
+import { FaHome } from 'react-icons/fa'; 
+
+// Importe o ícone desejado
 
 function NavBar() {
   return (
@@ -15,8 +17,8 @@ function NavBar() {
       </div>
 
       <ul className="flex justify-end items-center font-bold text-lg" style={{marginRight: '30px' }}>
-        <li className="ml-4 hidden sm:block"><a href="/sections/faq">Sobre</a></li>
-        <li className="ml-4 hidden sm:block"><a href="/sections/faqsection">Ajuda</a></li>
+        <li className="ml-4 hidden sm:block"><a href="/sections/faq">SOBRE</a></li>
+        <li className="ml-4 hidden sm:block"><a href="/sections/faqsection">AJUDA</a></li>
       </ul>
     </nav>
   );
