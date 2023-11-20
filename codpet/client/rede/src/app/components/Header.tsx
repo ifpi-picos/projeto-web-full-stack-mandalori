@@ -79,12 +79,6 @@ function Header() {
             </div>
             <div className="flex gap-2 items-center text-gray-600">
                 <div className="flex gap-3 ">
-                    <button className="bg-zinc-200 p-2 rounded-full hover:bg-zinc-400">
-                        <TbMessageCircle2Filled/>
-                    </button >
-                    <button className="bg-zinc-200 p-2 rounded-full hover:bg-zinc-400">
-                        <FaBell/>
-                    </button>
                 </div>
                 <div className="relative" onMouseLeave={()=>setShowMenu(false)} onMouseEnter={()=>setShowMenu(true)}> 
                     <button className="flex gap-2 items-center " onClick={()=>setShowMenu(!showMenu)}>
