@@ -2,7 +2,7 @@
 
 ## *Projeto CodPet*
 
-#### Projeto Web Full Stack
+#
 
 ##### **projeto e membros**
 
