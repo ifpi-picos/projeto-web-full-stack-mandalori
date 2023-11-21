@@ -17,13 +17,13 @@ const Page = () => {
   
     <div className="d-flex justify-content-center flex-wrap">
       <button className="btn btn-primary m-2"
-        style={{ fontSize: '1.5rem',  backgroundColor: '#1457ae', borderRadius: '10px', cursor: 'pointer', color: '#ffffff',width: '150px',}} >
+        style={{ fontSize: '1.5rem',  backgroundColor: '#1457ae', borderRadius: '10px', cursor: 'pointer', color: '#ffffff',width: '160px',fontFamily: 'Inter'}} >
         <Link href="/login">Entrar</Link>
       </button>
   
       <button
         className="btn btn-primary m-2"
-        style={{ fontSize: '1.5rem',  backgroundColor: '#1457ae', borderRadius: '10px', cursor: 'pointer', color: '#ffffff', width: '150px',}}>
+        style={{ fontSize: '1.5rem',  backgroundColor: '#1457ae', borderRadius: '10px', cursor: 'pointer', color: '#ffffff', width: '160px', fontFamily: 'Inter'}}>
         <Link href="/register">Cadastrar-se</Link>
       </button>
     </div>

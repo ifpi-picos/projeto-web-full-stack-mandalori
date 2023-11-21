@@ -16,7 +16,7 @@ function NavBar() {
         </ul>
       </div>
 
-      <ul className="flex justify-end items-center font-bold text-lg" style={{marginRight: '30px' }}>
+      <ul className="flex justify-end items-center font-bold text-lg" style={{marginRight: '30px', fontFamily: 'Inter', fontWeight: 'bold',  fontSize: '22px'}}>
         <li className="ml-4 hidden sm:block"><a href="/sections/faq">Sobre</a></li>
         <li className="ml-4 hidden sm:block"><a href="/sections/faqsection">Ajuda</a></li>
       </ul>

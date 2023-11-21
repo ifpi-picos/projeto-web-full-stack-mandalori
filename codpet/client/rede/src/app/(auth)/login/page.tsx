@@ -32,11 +32,11 @@ function Login() {
 
     return (
         <>
-          <h1 className="text-center" style={{ color: "#21344d", fontSize: "50px", fontWeight: "bold", fontStyle: "italic", alignItems: 'center' }}>login</h1>
+          <h1 className="text-center" style={{ color: "#21344d", fontSize: "50px", fontWeight: "bold",  alignItems: 'center', fontFamily: 'Inter', }}>Login</h1>
       
-          <h1 className="text-center" style={{ color: "#21344d", fontSize: "24px", fontWeight: "bold", fontFamily: 'Inter',fontStyle: "italic", textAlign: 'left' }}>email</h1>  
+          <h1 className="text-center" style={{ color: "#21344d", fontSize: "24px", fontWeight: "bold", fontFamily: 'Inter', textAlign: 'left' }}>Email</h1>  
           <AuthInput label=" " newState={setEmail} />
-          <h1 className="text-center" style={{ color: "#21344d", fontSize: "24px", fontWeight: "bold", fontFamily: 'Inter',fontStyle: "italic", textAlign: 'left' }}>senha</h1>
+          <h1 className="text-center" style={{ color: "#21344d", fontSize: "24px", fontWeight: "bold", fontFamily: 'Inter', textAlign: 'left' }}>Senha</h1>
           <AuthInput label=" " newState={setPassword} isPassword />
 
           {error.length > 0 && <span className="text-red-600">* {error}</span>}
@@ -49,23 +49,25 @@ function Login() {
         cursor: 'pointer',
         color: '#ffffff',
         paddingLeft: '10px',
+        fontFamily: 'Inter',
        
       }}
       className="py-3 font-bold text-white rounded-lg hover:092948" 
       onClick={(e) => handleLogin(e)}
-    >entrar
+    > Entrar
     </button>
 
           <Link href='/register' 
             style={{
             fontSize: '20px',
             fontWeight: 'italic',
-            color: "#53566e"
+            color: "#53566e",
+            fontFamily: 'Inter',
             }}
           className="text-center" >
             Ainda não possui uma conta?
             <br/>
-            <strong className="text-center underline color:#0000" >crie uma conta!</strong>
+            <strong className="text-center underline color:#0000" style={{fontFamily: 'Inter',}} >crie uma conta!</strong>
             </Link>
         </>
        

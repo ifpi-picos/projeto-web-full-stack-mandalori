@@ -34,16 +34,16 @@ function Register(){
 
     return(
         <>
-        <h1 className="text-center" style={{ color: "#21344d", fontSize: "50px", fontWeight: "bold", fontStyle: "italic", alignItems: 'center' }}>registrar</h1>
+        <h1 className="text-center" style={{ color: "#21344d", fontSize: "50px", fontWeight: "bold", fontFamily: 'Inter', alignItems: 'center' }}>Registrar</h1>
           
-        <h1 className="text-center" style={{ fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", textAlign: 'left' }}>nome</h1>
+        <h1 className="text-center" style={{ fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Nome</h1>
         <AuthInput label="  " newState={setUserName} />
-        <h1 className="text-center" style={{fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", textAlign: 'left' }}>email</h1>
+        <h1 className="text-center" style={{fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Email</h1>
         <AuthInput label=" " newState={setEmail}/>
-        <h1 className="text-center" style={{ fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", textAlign: 'left' }}>senha</h1>
+        <h1 className="text-center" style={{ fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Senha</h1>
           
         <AuthInput label=" " newState={setPassword} isPassword/>
-        <h1 className="text-center" style={{fontFamily: 'Inter',  color: "#21344d", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", textAlign: 'left' }}>confirme a senha</h1>
+        <h1 className="text-center" style={{fontFamily: 'Inter',  color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Confirme a senha</h1>
           
         <AuthInput label="  " newState={setConfirmPassword}isPassword/>
 
@@ -57,20 +57,21 @@ function Register(){
         fontWeight: 'bold',
         cursor: 'pointer',
         color: '#ffffff',
-       
+        fontFamily: 'Inter',
       }}
       className="py-3 font-bold text-white rounded-lg hover:092948" 
-      onClick={(e)=>handleRegister(e)}>cadastrar</button>
+      onClick={(e)=>handleRegister(e)}>Cadastrar</button>
        
 
     <Link href='/login' 
      style={{
         fontSize: '20px',
         fontWeight: 'italic',
-        color: "#00000"
+        color: "#00000",
+        fontFamily: 'Inter',
         }}
     className="text-center underline">
-    <strong>logar</strong>
+    <strong>Logar</strong>
     </Link>
         </>
         )
