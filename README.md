@@ -2,8 +2,6 @@
 
 ## *Projeto CodPet*
 
-#
-
 ##### **projeto e membros**
 
 *O codpet é uma plataforma que irá alocar as
