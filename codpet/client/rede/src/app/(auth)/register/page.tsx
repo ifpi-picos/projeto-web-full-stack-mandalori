@@ -34,16 +34,16 @@ function Register(){
 
     return(
         <>
-        <h1 className="text-center" style={{ color: "#21344d", fontSize: "50px", fontWeight: "bold", fontFamily: 'Inter', alignItems: 'center' }}>Registrar</h1>
+        <h1 className="text-center" style={{ color: "#21344d", fontSize: "50px", fontWeight: "bold",  fontFamily: 'arial', alignItems: 'center' }}>Registrar</h1>
           
-        <h1 className="text-center" style={{ fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Nome</h1>
+        <h1 className="text-center" style={{  fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Nome</h1>
         <AuthInput label="  " newState={setUserName} />
-        <h1 className="text-center" style={{fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Email</h1>
+        <h1 className="text-center" style={{ fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Email</h1>
         <AuthInput label=" " newState={setEmail}/>
-        <h1 className="text-center" style={{ fontFamily: 'Inter', color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Senha</h1>
+        <h1 className="text-center" style={{  fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Senha</h1>
           
         <AuthInput label=" " newState={setPassword} isPassword/>
-        <h1 className="text-center" style={{fontFamily: 'Inter',  color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Confirme a senha</h1>
+        <h1 className="text-center" style={{ fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Confirme a senha</h1>
           
         <AuthInput label="  " newState={setConfirmPassword}isPassword/>
 
@@ -57,7 +57,7 @@ function Register(){
         fontWeight: 'bold',
         cursor: 'pointer',
         color: '#ffffff',
-        fontFamily: 'Inter',
+        fontFamily: 'arial',
       }}
       className="py-3 font-bold text-white rounded-lg hover:092948" 
       onClick={(e)=>handleRegister(e)}>Cadastrar</button>
@@ -68,7 +68,7 @@ function Register(){
         fontSize: '20px',
         fontWeight: 'italic',
         color: "#00000",
-        fontFamily: 'Inter',
+        fontFamily: 'arial',
         }}
     className="text-center underline">
     <strong>Logar</strong>
