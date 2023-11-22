@@ -55,6 +55,11 @@ export const register = (req, res)=>{
 export const login = (req, res)=>{
     const {email, password} = req.body
 
+    if (!email || !password) {
+        return res.status(400).json({ msg: 'digite o e-mail e a senha.' });
+      }
+
+
     db.query(
         'SELECT * FROM user WHERE email = ?', 
         [email], 
