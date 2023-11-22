@@ -9,11 +9,20 @@ export const register = (req, res)=>{
     if (!username){
         return res.status(422).json({msg: 'o nome eh obrigatorio'})
     }
+    if (!/^[a-zA-Z0-9_-]{3,16}$/.test(username)) {
+        return res.status(422).json({ msg: 'nome de usuário inválido. use apenas letras, números, "-" e "_", com 3 a 16 caracteres.' });
+    }
     if (!email){
         return res.status(422).json({msg: 'o email eh obrigatorio'})
     }
+    if (!/^\S+@\S+$/.test(email)) {
+        return res.status(422).json({ msg: 'formato de email inválido.' });
+    }
     if (!password){
         return res.status(422).json({msg: 'a senha eh obrigatoria'})
+    }
+    if (password.length < 8) {
+        return res.status(422).json({ msg: 'a senha deve ter no mínimo 8 caracteres' });
     }
     if (confirmPassword != password){
         return res.status(422).json({msg: 'as senhas estao diferentes'})

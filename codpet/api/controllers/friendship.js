@@ -37,7 +37,7 @@ export const getFriendship = (req, res)=>{
             console.log(error)
             return res.status(500).json({msg: 'erro no servidor'})
         }else if(data){
-            console.log(data)
+            // console.log(data)
             return res.status(200).json({data})
 
         }
