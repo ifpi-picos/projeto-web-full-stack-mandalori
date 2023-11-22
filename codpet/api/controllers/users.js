@@ -19,47 +19,30 @@ export const getUser = (req, res) =>{
     })
 }
 
-export const updateUser = (req, res) => {
-  const { username, userImg, bgImg, id } = req.body;
-  let updateFields = [];
-  let updateValues = [];
 
-  if (username) {
-      updateFields.push('username = ?');
-      updateValues.push(username);
+export const updateUser = (req, res) =>{
+
+  const {username, userImg, bgImg, id} = req.body
+
+  if(!username || !userImg || !bgImg) //se todas forem negativas
+  { 
+      return res.status(422).json({msg: 'sem alteraçoes pra serem feitas'})
   }
 
-  if (userImg) {
-      updateFields.push('userImg = ?');
-      updateValues.push(userImg);
-  }
-
-  if (bgImg) {
-
-  
-      updateFields.push('bgImg = ?');
-      updateValues.push(bgImg);
-  }
-
-  if (updateFields.length === 0) {
-      return res.status(422).json({ msg: 'Sem alterações para serem feitas' });
-  }
-
-  
-
-  const updateQuery = `UPDATE user SET ${updateFields.join(', ')} WHERE id = ?`;
-
-  db.query(updateQuery, [...updateValues, id], (error, data) => {
-      if (error) {
-          console.log(error);
-          return res.status(500).json({ msg: 'Erro no servidor' });
+  db.query('UPDATE user SET username = ?, userImg = ?, bgImg = ? WHERE id = ?', [username, userImg, bgImg, id], (error, data)=>{
+  // cada ponto de interrogação desse vai ser atendida por uma dessas variaveis    
+      
+      if (error){
+          console.log(error)
+          res.status(500).json({msg: 'erro no servidor',})
       }
-
-      if (data.affectedRows > 0) {
-          return res.status(200).json('Atualizado com sucesso');
+      if(data.affectedRows > 0)
+      {
+          return res.status(200).json('atualizado com sucesso')
       }
-  });
-};
+  })
+}
+
 
 
 
