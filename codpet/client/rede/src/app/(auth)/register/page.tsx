@@ -16,64 +16,41 @@ function Register(){
     const[password, setPassword ] =useState('')
     const[confirmPassword, setConfirmPassword ] =useState('')
     const[error, setError] =useState('')
-    const[sucess, setSucess] =useState('')
+    const[success, setSuccess] =useState('')
 
 
     const handleRegister = (e:any)=>{
         e.preventDefault()
         makeRequest.post("auth/register", {username, email, password, confirmPassword}).then((res)=>{
             console.log(res.data)
-            setSucess(res.data.msg)
+            setSuccess(res.data.msg)
             setError('')
         }).catch((err)=>{
             console.log(err);
             setError(err.response.data.msg)
-            setSucess('')
+            setSuccess('')
         })
     }
 
     return(
-        <>
-        <h1 className="text-center" style={{ color: "#21344d", fontSize: "50px", fontWeight: "bold",  fontFamily: 'arial', alignItems: 'center' }}>Registrar</h1>
-          
-        <h1 className="text-center" style={{  fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Nome</h1>
-        <AuthInput label="  " newState={setUserName} />
-        <h1 className="text-center" style={{ fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold", textAlign: 'left' }}>Email</h1>
-        <AuthInput label=" " newState={setEmail}/>
-        <h1 className="text-center" style={{  fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Senha</h1>
-          
-        <AuthInput label=" " newState={setPassword} isPassword/>
-        <h1 className="text-center" style={{ fontFamily: 'arial', color: "#21344d", fontSize: "20px", fontWeight: "bold",  textAlign: 'left' }}>Confirme a senha</h1>
-          
-        <AuthInput label="  " newState={setConfirmPassword}isPassword/>
+        
+            <>
+            <title>Cadastro</title>
+            <h1 className="font-bold text-2xl text-center">Cadastre-se</h1>
+            <AuthInput label="Username" newState={setUserName} />
+            <AuthInput label="Email" newState={setEmail} />
+            <AuthInput label="Senha" newState={setPassword} isPassword />
+            <AuthInput label="Confirme sua senha" newState={setConfirmPassword} isPassword />
+            {error.length > 0 && <span className="text-red-600">* {error}</span>}
+            {success.length > 0 && <span className="text-green-600">* {success}</span>}
+            <button className="bg-blue-800 py-3 font-bold text-white rounded-lg hover:bg-blue-600" onClick={(e) => handleRegister(e)}>
+                Cadastrar
+            </button>
+            <Link href="/login" className="text-center underline">
+                Logar
+            </Link>
+            </>
 
-        {error.length>0 && <span className="text-red-600">* {error}</span>}
-        {sucess.length>0 && <span className="text-green-600">* {sucess}</span>}
-
-        <button 
-         style={{
-        backgroundColor: '#1457ae',
-        fontSize: '20px',
-        fontWeight: 'bold',
-        cursor: 'pointer',
-        color: '#ffffff',
-        fontFamily: 'arial',
-      }}
-      className="py-3 font-bold text-white rounded-lg hover:092948" 
-      onClick={(e)=>handleRegister(e)}>Cadastrar</button>
-       
-
-    <Link href='/login' 
-     style={{
-        fontSize: '20px',
-        fontWeight: 'italic',
-        color: "#00000",
-        fontFamily: 'arial',
-        }}
-    className="text-center underline">
-    <strong>Logar</strong>
-    </Link>
-        </>
         )
     }
 

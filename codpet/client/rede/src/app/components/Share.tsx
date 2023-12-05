@@ -56,40 +56,52 @@ function Share() {
 
 
     return(
-    <div className="w-full bg-white rounded-lg p-4 shadow-md flex flex-col gap-3">
-        {
-            img && <img src={postImg} alt="img do post"></img> //imagem do post
-        }
-        <div>                    
-            <div className="flex gap-4 pt-6">
 
-        <Link href={'/profile?id=' + user?.id}>
-        <img 
-            src={user?.userImg? user.userImg: 'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'} 
-            alt="imagem do perfil" 
-            className="u-8 h-8 rounded-full"  />
-        </Link>
-        <div className="w-full bg-zinc-100 flex items-center text-gray rounded-full">
-            <input placeholder= {`o que esta acontecendo, ${user?.username}?`} 
-            value={post_desc}
-            type="text" className="bg-zinc-100 w-full focus-visible:outline:none rounded-full" 
-            onChange={(e)=> setDesc(e.target.value)}/>
-            <button onClick={()=> sharePost()}>
-            <FaPaperPlane/>
-            </button>
-        </div>
+<div className="w-full sm:w-2/4 md:w-3/4 lg:w-1/2 xl:w-2/4 bg-white rounded-lg p-4 shadow-md flex flex-col gap-4">
+  {img && <img src={postImg} alt="img do post" className="w-full rounded-lg mb-2" />}
+  <div className="flex flex-col sm:flex-row items-start gap-4">
+
+    <Link href={'/profile?id=' + user?.id}>
+      <img
+        src={user?.userImg ? user.userImg : 'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'}
+        alt="imagem do perfil"
+        className="u-8 h-8 rounded-full mb-2 sm:mb-0"
+      />
+    </Link>
+
+    <div className="flex flex-col w-full">
+      <textarea
+        placeholder={`O que está acontecendo, ${user?.username}?`}
+        value={post_desc}
+        className="w-full focus:outline-none resize-none border-b-2 border-gray"
+        onChange={(e) => setDesc(e.target.value)}
+      />
     </div>
+  </div>
 
-        <div className="flex justify-around py-4 text-gray-600 border-y">
-            <input className="hidden" type='file' id='img' onChange={(e)=> e.target.files && setImg(e.target.files[0])} />
-            <label htmlFor="img" className="flex">
-            <TbPhoto className= 'text-2xl'/>adicionar imagem</label>
-        </div>
-
-
-
-        </div>
+  <div className="flex justify-between items-center">
+    <div className="flex items-center ">
+      <input
+        type="file"
+        id="img"
+        className="hidden l-3"
+        onChange={(e) => e.target.files && setImg(e.target.files[0])}
+      />
+      <label htmlFor="img" className="cursor-pointer">
+        <TbPhoto className='text-2xl text-gray-500 hover:text-blue-500' />
+      </label>
     </div>
+    <button
+      onClick={() => sharePost()}
+      className="bg-blue-500 text-white rounded-full px-4 py-2 hover:bg-blue-600"
+    >
+      Postar
+    </button>
+  </div>
+</div>
+
+
+
 )
 }
 

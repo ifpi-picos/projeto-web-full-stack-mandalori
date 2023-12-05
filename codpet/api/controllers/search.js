@@ -1,28 +1,27 @@
-import {db} from '../connect.js'
+import { db } from '../connect.js';
 
 export const searchUser = (req, res) => {
-    const params = '%' + req.query.params + '%';
+    const params = `%${req.query.params}%`;
 
     if (!params) {
-        return res.status(422).json({ msg: 'é preciso o param' });
+        return res.status(422).json({ msg: 'É preciso o parâmetro' });
     }
 
     db.query('SELECT username, userImg, id FROM user WHERE username LIKE ?', [params], (error, data) => {
         if (error) {
             console.log(error);
-            res.status(500).json({ msg: 'erro no servidor' });
+            res.status(500).json({ msg: 'Erro no servidor' });
         } else {
             return res.status(200).json(data);
         }
     });
 };
 
-
 export const searchPost = (req, res) => {
-    const params = '%' + req.query.params + '%'; // essas porcentagens pegam tudo o que ta nos params
+    const params = `%${req.query.params}%`;
 
     if (!params) {
-        return res.status(422).json({ msg: 'é preciso o param' });
+        return res.status(422).json({ msg: 'É preciso o parâmetro' });
     }
 
     db.query(
@@ -31,7 +30,7 @@ export const searchPost = (req, res) => {
         (error, data) => {
             if (error) {
                 console.log(error);
-                res.status(500).json({ msg: 'erro no servidor' });
+                res.status(500).json({ msg: 'Erro no servidor' });
             } else {
                 return res.status(200).json(data);
             }

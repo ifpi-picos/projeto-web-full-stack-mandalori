@@ -44,89 +44,58 @@ depois na mesma pasta rode o comando
 
 ### crie um schema com o nome "rede_social"
 
-create database rede_social;
+CREATE DATABASE codpet;
 
-use rede_social;
+USE codpet;
 
-create table `rede_social`. `user` (
-    `id` int not null auto_increment,
-    `username` varchar(45) not null, 
-    `email` varchar(100) not null,
-    `password` varchar(200) null,
-    `userImg` varchar(300) null,
-    `bgImg` varchar(300) null,
-    primary key (`id`)
-) auto_increment=1;
+CREATE TABLE codpet.user (
+  id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(45) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(200) NULL,
+  userImg VARCHAR(300) NULL,
+  bgImg VARCHAR(300) NULL,
+  PRIMARY KEY (id)
+) AUTO_INCREMENT=1;
 
+CREATE TABLE codpet.posts (
+  id INT NOT NULL AUTO_INCREMENT,
+  post_desc VARCHAR(200) NULL,
+  img VARCHAR(300) NULL,
+  userId INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  CONSTRAINT userId FOREIGN KEY (userId) REFERENCES codpet.user(id) ON DELETE CASCADE ON UPDATE CASCADE
+) AUTO_INCREMENT=1;
 
-create table `rede_social`. `posts` (
-	`id` int not null auto_increment,
-    `post_desc` varchar(200) null,
-    `img` varchar(300) null,
-    `userId` int not null,
-    `created_at` timestamp default current_timestamp,
-    primary key (`id`),
-    constraint `userId`
-    foreign key (`userId`)
-    references `rede_social`.`user`(`id`)
-    on delete cascade
-    on update cascade
-) auto_increment=1;
+CREATE TABLE codpet.comments (
+  id INT NOT NULL AUTO_INCREMENT,
+  comment_desc VARCHAR(200) NOT NULL,
+  comment_user_id INT NOT NULL,
+  post_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  CONSTRAINT comment_user_id FOREIGN KEY (comment_user_id) REFERENCES codpet.user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT post_id FOREIGN KEY (post_id) REFERENCES codpet.posts(id) ON DELETE CASCADE ON UPDATE CASCADE
+) AUTO_INCREMENT=1;
 
-create table `rede_social`. `comments` (
-    `id` int not null auto_increment,
-    `comment_desc` varchar(200) not null,
-    `comment_user_id` int not null,
-    `post_id` int not null,
-    `created_at` timestamp default current_timestamp ,
-    primary key (`id`),
-    constraint `comment_user_id`
-    foreign key (`comment_user_id`)
-    references `rede_social`.`user`(`id`)
-    on delete cascade
-    on update cascade,
-	constraint `post_id`
-    foreign key (`post_id`)
-    references `rede_social`.`posts`(`id`)
-    on delete cascade
-    on update cascade
-    
-) auto_increment=1;
+CREATE TABLE codpet.likes (
+  id INT NOT NULL AUTO_INCREMENT,
+  likes_user_id INT NOT NULL,
+  likes_post_id INT NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT likes_user_id FOREIGN KEY (likes_user_id) REFERENCES codpet.user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT likes_post_id FOREIGN KEY (likes_post_id) REFERENCES codpet.posts(id) ON DELETE CASCADE ON UPDATE CASCADE
+) AUTO_INCREMENT=1;
 
-create table rede_social. likes (
-    id int not null auto_increment,  
-    likes_user_id int not null, 
-    likes_post_id int not null, 
-    primary key (id), 
-    constraint likes_user_id 
-    foreign key (likes_user_id) 
-    references rede_social.user(id) 
-    on delete cascade 
-    on update cascade, 
-    constraint likes_post_id 
-    foreign key (likes_post_id) 
-    references rede_social.posts(id) 
-    on delete cascade 
-    on update cascade
+CREATE TABLE codpet.friendship (
+  id INT NOT NULL AUTO_INCREMENT,
+  follower_id INT NOT NULL,
+  followed_id INT NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT follower_id FOREIGN KEY (follower_id) REFERENCES codpet.user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT followed_id FOREIGN KEY (followed_id) REFERENCES codpet.user(id) ON DELETE CASCADE ON UPDATE CASCADE
+) AUTO_INCREMENT=1;
 
-) auto_increment=1;
-
-
-create table `rede_social`. `friendship` (
-    `id` int not null auto_increment,
-    `follower_id` int not null,
-    `followed_id` int not null,
-    primary key (`id`),
-    constraint `follower_id`
-    foreign key (`follower_id`)
-    references `rede_social`.`user`(`id`)
-    on delete cascade
-    on update cascade,
-	constraint `followed_id`
-    foreign key (`followed_id`)
-    references `rede_social`.`user`(`id`)
-    on delete cascade
-    on update cascade
-) auto_increment=1;
 
 

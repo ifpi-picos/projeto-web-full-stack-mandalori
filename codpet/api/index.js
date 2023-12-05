@@ -42,5 +42,5 @@ app.use('/api/comment/', commentRouter)
 
 
 app.listen(8001, () =>{
-    console.log('servidor rodando na porta 8001')
+    console.log('Servidor rodando na porta 8001')
 }) 

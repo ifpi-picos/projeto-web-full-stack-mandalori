@@ -44,7 +44,7 @@ export default function MainHome({children}:{children: ReactNode}) {
         <div className='w-full flex justify-center'>
         {children}
         </div>
-        <Friendshiptable/>
+
         </div>
     </main>
   )
