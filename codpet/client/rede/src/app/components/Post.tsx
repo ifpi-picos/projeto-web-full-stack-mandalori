@@ -114,11 +114,11 @@ function Post(props:{post: IPost}) {
       <Link href={'/profile?id=' + userId}>
         <img
           className="w-8 h-8 rounded-full"
-          src={user?.userImg ? userImg : "https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png"}
+          src={userImg ? userImg : "https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png"}
           alt="imagem do usuário que fez o post"
         />
         <div className="flex flex-col">
-          <span className="font-semibold">{user?.username}</span>
+          <span className="font-semibold">{username}</span>
           <span className="text-xs">{moment(created_at).fromNow().charAt(0).toUpperCase() + moment(created_at).fromNow().slice(1)}</span>
         </div>
       </Link>
@@ -182,33 +182,36 @@ function Post(props:{post: IPost}) {
       <Comment comment={comment} key={id} />
     ))}
 
-    <div className="flex gap-4 pt-6 items-center">
-      <Link href={'/profile?id=' + user?.id} className="hidden sm:block">
-      <img
-          className="w-8 h-8 rounded-full"
-          src={userImg ? userImg : "https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png"}
-          alt="imagem do usuário que fez o post"
-        />
-      </Link>
-
-      <div className="bg-white w-full sm:w-full md:w-full flex flex-col items-center ">
-        <input
-          id={"comment" + id}
-          type="text"
-          className="w-full sm:w-full md:w-full focus:outline-none px-4 py-2 text-black-800 placeholder-black-500 ml-auto border-b-2 border-gray"
-          value={comment_desc}
-          onChange={(e) => setComment_desc(e.target.value)}
-          placeholder="Comente..."
-        />
-      </div>
-
-      <button
-        onClick={() => shareComment()}
-        className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none ml-auto "
-      >
-        <FaPaperPlane />
-      </button>
+<div className="flex gap-4 pt-6 items-center">
+  <Link href={'/profile?id=' + user?.id} className="hidden sm:block">
+    <div className="flex-shrink-0">
+      <img 
+        src={user?.userImg ? user.userImg : 'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'} 
+        alt="imagem do perfil" 
+        className="w-8 h-8 rounded-full"  
+      />
     </div>
+  </Link>
+
+  <div className="bg-white flex-grow flex flex-col items-center">
+    <input
+      id={"comment" + id}
+      type="text"
+      className="w-full focus:outline-none px-4 py-2 text-black-800 placeholder-black-500 border-b-2 border-gray"
+      value={comment_desc}
+      onChange={(e) => setComment_desc(e.target.value)}
+      placeholder="Comente..."
+    />
+  </div>
+
+  <button
+    onClick={() => shareComment()}
+    className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none ml-auto "
+  >
+    <FaPaperPlane />
+  </button>
+</div>
+
   </div>
 </div>
 
