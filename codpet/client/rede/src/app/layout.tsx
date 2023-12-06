@@ -34,7 +34,6 @@ export default function RootLayout({
     </head>
     <body className={inter.className}><QueryClientProvider client={queryClient}><UserContextProvider>{children}</UserContextProvider></QueryClientProvider>
     </body>
-    <title>CodPet</title>
   </html>
 );
 };
