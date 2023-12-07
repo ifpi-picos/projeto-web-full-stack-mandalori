@@ -44,7 +44,7 @@ depois na mesma pasta rode o comando
 
 ### crie um schema com o nome "codpet"
 
-CREATE DATABASE codpet;
+CREATE SCHEMA codpet;
 
 USE codpet;
 

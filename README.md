@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/U2l29CBO)
 # Equipe Mandalori
 
 ## *Projeto CodPet*
@@ -14,18 +15,18 @@ localização de animais perdidos*
 
 ##### Tecnologias
 
+* *React*
+* *JavaScript*
 * *Nodejs*
 * *Next*
 * *Mysql*
-* *react*
-* *JavaScript*
 
 ##### Arquitetura e documentação
 
 [https://drive.google.com/file/d/1A1IuCPVaw2MuH8xy0eZrL5aIQPSwEJOH/view?usp=sharing](drive "arquivos")
 
 * *MVC;*
-* *divisão por funcionalidade.*
+* *Divisão por funcionalidade.*
 
 ##### **Integração e segurança entre front e back**
 
