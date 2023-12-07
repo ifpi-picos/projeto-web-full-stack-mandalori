@@ -1,6 +1,3 @@
-
-app online https://codpet-front-production.up.railway.app/
-
 # Equipe Mandalori
 
 ## *Projeto CodPet*
@@ -40,9 +37,6 @@ localização de animais perdidos*
 
 https://github.com/danieluau/rede
 
-https://github.com/danieluau/codpet-front
-
-https://github.com/danieluau/codpet-back
-
 https://github.com/joyzinhw/frontrede
 
+https://github.com/joyzinhw/testesjestcodpet
