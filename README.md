@@ -7,9 +7,7 @@ app online https://codpet-front-production.up.railway.app/
 
 ##### **projeto e membros**
 
-*O codpet é uma plataforma que irá alocar as
-informações do animais e donos para ajudar na
-localização de animais perdidos*
+*Com a missão de facilitar a localização de animais perdidos e promover a adoção responsável, o projeto se apresenta como uma rede social focada em pets. Aqui, são registradas informações sobre animais perdidos, seus donos e outros detalhes, visando facilitar a devolução ou adoção desses animais.*
 
 | Daniel Araujo | Joyce Moura |
 | :-----------: | :---------: |
@@ -23,7 +21,6 @@ localização de animais perdidos*
 
 
 ##### Arquitetura e documentação
-
 
 * *MVC;*
 * *Divisão por funcionalidade.*
