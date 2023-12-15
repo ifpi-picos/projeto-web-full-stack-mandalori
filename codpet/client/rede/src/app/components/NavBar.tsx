@@ -17,8 +17,8 @@ function NavBar() {
   </div>
 
   <ul className="flex justify-end items-center font-bold text-lg" style={{ marginRight: '30px', fontFamily: 'Arial', fontWeight: 'bold', fontSize: '22px' }}>
-    <li className="ml-4 transition duration-300 hover:text-gray-300"><a href="http://localhost:3000/ok/sections/faq">Sobre</a></li>
-    <li className="ml-4 transition duration-300 hover:text-gray-300"><a href="http://localhost:3000/ok/sections/faqsection">Ajuda</a></li>
+    <li className="ml-4 transition duration-300 hover:text-gray-300"><a href="http://localhost:3000/init/sections/faq">Sobre</a></li>
+    <li className="ml-4 transition duration-300 hover:text-gray-300"><a href="http://localhost:3000/init/sections/faqsection">Ajuda</a></li>
   </ul>
 </nav>
 

@@ -7,43 +7,37 @@ export const createPost = (req, res) => {
         return res.status(422).json({ msg: 'O post precisa de texto ou imagem' });
     }
 
-    db.query('INSERT INTO posts SET ?', { post_desc, img, userId }, (error) => {
+    // Extrair o nome do arquivo da URL do Cloudinary
+    const imgUrl = typeof img === 'object' ? img.url : img;
+    const fileName = imgUrl.substring(imgUrl.lastIndexOf('/') + 1);
+
+    db.query('INSERT INTO posts SET ?', { post_desc, img: fileName, userId }, (error, results) => {
         if (error) {
-            console.log(error);
-            return res.status(500).json({ msg: 'Erro no servidor' });
+            console.error(error);
+            handleServerError(res, error);
         } else {
-            return res.status(200).json({ msg: 'Postagem feita com sucesso' });
+            console.log('Postagem feita com sucesso. ID:', results.insertId);
+            res.status(200).json({ msg: 'Postagem feita com sucesso', postId: results.insertId });
         }
     });
 };
 
+
+
 export const getPost = (req, res) => {
-    if (req.query.id) {
-        db.query(
-            'SELECT p.*, u.username, userImg FROM posts as p JOIN user as u ON (u.id = p.userId) WHERE u.id = ? ORDER BY created_at DESC',
-            [req.query.id],
-            (error, data) => {
-                if (error) {
-                    console.log(error);
-                    return res.status(500).json({ msg: 'Erro no servidor' });
-                } else if (data) {
-                    return res.status(200).json({ data });
-                }
-            }
-        );
-    } else {
-        db.query(
-            'SELECT p.*, u.username, userImg FROM posts as p JOIN user as u ON (u.Id = p.userId) ORDER BY created_at DESC',
-            (error, data) => {
-                if (error) {
-                    console.log(error);
-                    return res.status(500).json({ msg: 'Erro no servidor' });
-                } else if (data) {
-                    return res.status(200).json({ data });
-                }
-            }
-        );
-    }
+    const userId = req.query.id;
+
+    const query = userId
+        ? 'SELECT p.*, u.username, userImg FROM posts as p JOIN user as u ON (u.id = p.userId) WHERE u.id = ? ORDER BY created_at DESC'
+        : 'SELECT p.*, u.username, userImg FROM posts as p JOIN user as u ON (u.Id = p.userId) ORDER BY created_at DESC';
+
+    db.query(query, [userId], (error, data) => {
+        if (error) {
+            handleServerError(res, error);
+        } else if (data) {
+            res.status(200).json({ data });
+        }
+    });
 };
 
 export const deletePost = (req, res) => {
@@ -55,13 +49,12 @@ export const deletePost = (req, res) => {
 
     db.query('DELETE FROM posts WHERE id = ?', [postId], (error, data) => {
         if (error) {
-            console.log(error);
-            return res.status(500).json({ msg: 'Erro no servidor' });
+            handleServerError(res, error);
         } else {
             if (data.affectedRows > 0) {
-                return res.status(200).json('Postagem excluída com sucesso');
+                res.status(200).json('Postagem excluída com sucesso');
             } else {
-                return res.status(404).json({ msg: 'Postagem não encontrada' });
+                res.status(404).json({ msg: 'Postagem não encontrada' });
             }
         }
     });

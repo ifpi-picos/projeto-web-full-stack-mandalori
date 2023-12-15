@@ -1,7 +1,8 @@
-interface AuthInputProps{
-    newState: (state:string)=>void, 
-    label:string
-    isPassword?:boolean
+// Interface para as propriedades do componente AuthInput
+interface AuthInputProps {
+    newState: (state: string) => void; // Função para atualizar o estado no componente pai
+    label: string; // Rótulo do campo de entrada
+    isPassword?: boolean; // Indica se o campo é para senha (opcional, padrão é falso)
 }
 
 function AuthInput(props:AuthInputProps) {

@@ -25,7 +25,7 @@ function Sidebar() {
           <FaCommentAlt className="w-6 h-6 md:w-8 md:h-8" />
           <span className="text-lg font-bold hidden md:inline">Mensagens</span>
         </Link>
-        <Link href="" className="flex items-center gap-2 hover:text-blue-500">
+        <Link href="" className="flex items-center gap-2 hover:text-red-500">
           <FaHeart className="w-6 h-6 md:w-8 md:h-8" />
           <span className="text-lg font-bold hidden md:inline">Favs</span>
         </Link>

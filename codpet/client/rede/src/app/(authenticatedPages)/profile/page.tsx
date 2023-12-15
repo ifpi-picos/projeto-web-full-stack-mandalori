@@ -169,7 +169,7 @@ function Profile({ searchParams }: { searchParams: { id: string } }) {
             </span>
           </div>
         </div>
-        <div className="pt-36 w-3/5 flex flex-col items-center gap-3">
+        <div className="pt-32 w-3/5 flex flex-col items-center gap-5">
           {user?.id !== +searchParams.id ? (
             <button
               onClick={() =>

@@ -9,8 +9,8 @@ export const getUser = (req, res) => {
 
   db.query('SELECT username, userImg, bgImg FROM user WHERE id = ?', [id], (error, data) => {
     if (error) {
-      console.log(error);
-      res.status(500).json({ msg: 'Erro no servidor' });
+      console.error(error);
+      res.status(500).json({ msg: 'Erro ao obter usuário' });
     } else {
       return res.status(200).json(data);
     }
@@ -20,26 +20,16 @@ export const getUser = (req, res) => {
 export const updateUser = (req, res) => {
   const { username, userImg, bgImg, id } = req.body;
 
-  // Pode ter outras condições de validação aqui, dependendo dos requisitos do seu sistema
+  if (!id) {
+    return res.status(422).json({ msg: 'É preciso o ID' });
+  }
 
-  // Verifica se pelo menos uma alteração está sendo feita
   if (!username && !userImg && !bgImg) {
     return res.status(422).json({ msg: 'Sem alterações para serem feitas' });
   }
 
-  if (username && !/^[a-zA-Z0-9_-]{3,16}$/.test(username)) {
-    return res.status(422).json({ msg: 'Username inválido. Use apenas letras, números, "-" e "_", com 3 a 16 caracteres.' });
-  }
+  // Outras validações de entrada...
 
-  if (userImg && userImg.length > 300) {
-    return res.status(422).json({ msg: 'O link da foto de perfil deve ter no máximo 300 caracteres.' });
-  }
-
-  if (bgImg && bgImg.length > 300) {
-    return res.status(422).json({ msg: 'O link da imagem de capa deve ter no máximo 300 caracteres.' });
-  }
-
-  // Monta a parte dinâmica da query baseada nas alterações que estão sendo feitas
   const updateFields = [];
   const values = [];
 
@@ -58,20 +48,18 @@ export const updateUser = (req, res) => {
     values.push(bgImg);
   }
 
-  // Executa a query apenas se houver campos para serem atualizados
   if (updateFields.length > 0) {
     const updateQuery = `UPDATE user SET ${updateFields.join(', ')} WHERE id = ?`;
-    values.push(id);
 
-    db.query(updateQuery, values, (error, data) => {
+    db.query(updateQuery, [...values, id], (error, data) => {
       if (error) {
-        console.log(error);
-        res.status(500).json({ msg: 'Erro no servidor' });
+        console.error(error);
+        return res.status(500).json({ msg: 'Erro ao atualizar usuário' });
       } else {
         if (data.affectedRows > 0) {
-          return res.status(200).json({ msg: 'Atualizado com sucesso' });
+          return res.status(200).json({ msg: 'Usuário atualizado com sucesso' });
         } else {
-          return res.status(400).json({ msg: 'Nenhum usuário encontrado para atualizar' });
+          return res.status(404).json({ msg: 'Nenhum usuário encontrado para atualizar' });
         }
       }
     });
@@ -79,7 +67,6 @@ export const updateUser = (req, res) => {
     return res.status(422).json({ msg: 'Sem alterações para serem feitas' });
   }
 };
-
 
 export const deleteUser = (req, res) => {
   const id = req.query.id;
@@ -90,11 +77,11 @@ export const deleteUser = (req, res) => {
 
   db.query('DELETE FROM user WHERE id = ?', [id], (error, data) => {
     if (error) {
-      console.log(error);
-      res.status(500).json({ msg: 'Erro no servidor' });
+      console.error(error);
+      res.status(500).json({ msg: 'Erro ao excluir usuário' });
     } else {
       if (data.affectedRows > 0) {
-        return res.status(200).json('Usuário excluído com sucesso');
+        return res.status(200).json({ msg: 'Usuário excluído com sucesso' });
       } else {
         return res.status(404).json({ msg: 'Usuário não encontrado' });
       }

@@ -24,7 +24,7 @@ function Faq() {
           <summary className="faq_label font-bold cursor-pointer">Proposta do Sistema</summary>
           <div className="faq_panel-body mt-2">
             <p className="faq_panel-answer text-gray-700">
-              Com a missão de facilitar a localização de animais perdidos e promover a adoção responsável, o projeto se apresenta como uma rede social focada em pets. Aqui, são registradas informações sobre animais perdidos, seus donos e outros detalhes, visando facilitar a devolução ou adoção desses animais.
+              Com a missão de facilitar a localização de animais perdidos e promover a adoção responsável, o projeto se apresenta como uma central de cadastros. Aqui, são registradas informações sobre animais perdidos, seus donos e outros detalhes, visando facilitar a devolução ou adoção desses animais.
             </p>
           </div>
         </details>

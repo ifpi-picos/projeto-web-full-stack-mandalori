@@ -1,6 +1,7 @@
 "use client"
 
 import { create } from "domain";
+import { RiMore2Fill } from 'react-icons/ri';
 import { useContext, useEffect, useState } from "react";
 import { FaHeart, FaPaperPlane, FaRegComment, FaThumbsUp } from "react-icons/fa";
 import moment from 'moment';
@@ -23,6 +24,8 @@ function Post(props:{post: IPost}) {
     const [showComments, setShowComments] = useState(false)
     const [liked, setLiked] = useState(false)
     const [showLikes, setShowLikes] = useState(false)
+    const [status, setStatus] = useState('available');
+    const [statusMenuOpen, setStatusMenuOpen] = useState(false);
     const queryClient = useQueryClient()
     
     // Likes QUery
@@ -71,7 +74,7 @@ function Post(props:{post: IPost}) {
         likesMutation.mutate({ 
             likes_user_id: user?.id, 
             likes_post_id: id,
-     });
+    });
     }   
 
 
@@ -106,23 +109,52 @@ function Post(props:{post: IPost}) {
         commentMutation.mutate({ comment_desc, comment_user_id: user?.id, post_id: id });
         setComment_desc('')
     }
+
+    const toggleStatus = async () => {
+      const newStatus = status === 'available' ? 'sold' : 'available';
+      await makeRequest.put(`posts/${id}`, { status: newStatus });
+      setStatus(newStatus);
+      setStatusMenuOpen(false); // Feche o menu após clicar em uma opção
+    };
+    
     
     return (
-<div className="w-full bg-white rounded-lg p-4 shadow-md min-h-[300px]">
-  <div className="overflow-hidden"> {/* Adicionado div com overflow-hidden */}
-    <header className="flex gap-2 pb-4 border-b items-center">
-      <Link href={'/profile?id=' + userId}>
-        <img
-          className="w-8 h-8 rounded-full"
-          src={userImg ? userImg : "https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png"}
-          alt="imagem do usuário que fez o post"
-        />
+      <div className="w-full bg-white rounded-lg p-4 shadow-md min-h-[300px]">
+      <div className="overflow-hidden">
+      <header className="flex gap-2 pb-4 border-b items-center relative">
+        <Link href={'/profile?id=' + userId}>
+          <img
+            className="w-8 h-8 rounded-full"
+            src={userImg ? userImg : "https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png"}
+            alt="imagem do usuário que fez o post"
+          />
+        </Link>
+
         <div className="flex flex-col">
           <span className="font-semibold">{username}</span>
           <span className="text-xs">{moment(created_at).fromNow().charAt(0).toUpperCase() + moment(created_at).fromNow().slice(1)}</span>
         </div>
-      </Link>
-    </header>
+
+        <div className="ml-auto">
+          {/* Ícone de três pontos que atua como um botão */}
+          <div className="cursor-pointer" onClick={() => setStatusMenuOpen(!statusMenuOpen)}>
+            <RiMore2Fill size={24} />
+          </div>
+
+          {statusMenuOpen && (
+            <div className="absolute border-b right-0 top-0 mt-8 bg-zinc-200 p-2 rounded-full">
+              {/* Opções do menu */}
+              <button
+                onClick={toggleStatus}
+                className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none ml-auto"
+              >
+                {status === 'available' ? 'Encontrado' : 'Perdido'}
+              </button>
+            </div>
+          )}
+        </div>
+      </header>
+
 
     {post_desc && (
       <div className="py-4 w-full">
@@ -130,13 +162,16 @@ function Post(props:{post: IPost}) {
       </div>
     )}
 
-    {img && (
-      <img
-        className="rounded-lg w-full"
-        src={`./upload/${img}`}
-        alt="img do post"
-      />
-    )}
+{img && (
+  <img
+    className="rounded-lg w-full"
+    src={`https://res.cloudinary.com/dptvlphju/image/upload/w_500,h_500,c_limit/v1701981347/codpet/${img}`}
+    // Substitua SEU_CLOUD_NAME pelo seu Cloudinary cloud_name
+    alt="img do post"
+  />
+)}
+
+
 
     <div className="flex justify-between py-4 border-b">
       <div
