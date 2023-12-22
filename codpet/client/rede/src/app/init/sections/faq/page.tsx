@@ -24,7 +24,7 @@ function Faq() {
           <summary className="faq_label font-bold cursor-pointer">Proposta do Sistema</summary>
           <div className="faq_panel-body mt-2">
             <p className="faq_panel-answer text-gray-700">
-              Com a missão de facilitar a localização de animais perdidos e promover a adoção responsável, o projeto se apresenta como uma central de cadastros. Aqui, são registradas informações sobre animais perdidos, seus donos e outros detalhes, visando facilitar a devolução ou adoção desses animais.
+            O projeto propõe uma rede social inovadora para facilitar a localização de animais perdidos e promover a adoção responsável. Diante da obsolescência dos métodos tradicionais de divulgação, a plataforma oferece aos donos de animais um espaço centralizado para compartilhar informações detalhadas. Buscando ser mais perceptível e eficiente do que os meios convencionais, a proposta visa engajar a comunidade, criando uma atmosfera colaborativa para ampliar as chances de localização e adoção. Esperamos que essa abordagem moderna não apenas atenda à necessidade imediata de encontrar animais perdidos, mas também fomente uma cultura de cuidado e responsabilidade.
             </p>
           </div>
         </details>
