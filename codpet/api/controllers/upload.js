@@ -8,9 +8,6 @@ cloudinary.config({
 });
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./imgs");
-  },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
   },
@@ -35,7 +32,7 @@ export const uploadController = async (req, res) => {
     });
   
     res.status(200).json({
-      message: 'Upload bem-sucedido',
+      message: 'upload bem-sucedido',
       filename: result.original_filename,
       url: result.secure_url,
     });
@@ -43,7 +40,7 @@ export const uploadController = async (req, res) => {
     // Esta linha agora está dentro do bloco try e só será executada se o upload for bem-sucedido.
     console.log(result.secure_url);
   } catch (error) {
-    console.error('Erro ao fazer upload para o Cloudinary:', error);
-    res.status(500).json({ error: 'Erro ao fazer upload para o Cloudinary.' });
+    console.error('erro ao fazer upload para o Cloudinary:', error);
+    res.status(500).json({ error: 'erro ao fazer upload para o Cloudinary.' });
   }
 }  

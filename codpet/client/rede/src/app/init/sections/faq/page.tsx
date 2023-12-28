@@ -46,7 +46,7 @@ function Faq() {
           <summary className="faq_label font-bold cursor-pointer">Termos de Uso</summary>
           <div className="faq_panel-body mt-2">
             <p className="faq_panel-answer text-gray-700">
-              Ao cadastrar-se, você concorda e aceita os termos de uso dos seus dados no nosso sistema. Comprometemo-nos a manter sua privacidade de acordo com a política existente, seguindo rigorosamente suas diretrizes.
+            Ao se cadastrar no CodPet, você concorda e aceita os termos de uso dos seus dados no nosso sistema. Garantimos a total privacidade e seguimos rigorosamente a política de privacidade existente para proteger suas informações.
             </p>
           </div>
         </details>
