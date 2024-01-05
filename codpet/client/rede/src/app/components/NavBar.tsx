@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaHome } from 'react-icons/fa'; 
 
-// Importe o ícone desejado
 
 function NavBar() {
   return (

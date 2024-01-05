@@ -8,8 +8,8 @@ import { checkRefreshToken } from '../middleware/refreshTokenValidation.js'
 const router = express.Router()
 
 router.post('/', checkRefreshToken , createPost)
-router.delete('/', checkRefreshToken, deletePost)
 router.get('/', checkToken, getPost)
+router.delete('/', checkRefreshToken, deletePost)
 
 
 export default router;

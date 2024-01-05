@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../../axios";
@@ -7,7 +9,6 @@ import Link from "next/link";
 import { FaBars, FaTimes } from 'react-icons/fa'; // Added toggle icons
 import { IFriendship } from '@/interfaces';
 
-// ... (other imports)
 
 function FriendshipTable() {
     const { user } = useContext(UserContext);

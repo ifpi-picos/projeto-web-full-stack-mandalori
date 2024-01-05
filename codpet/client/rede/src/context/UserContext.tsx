@@ -2,47 +2,51 @@
 
 import {createContext, useEffect, useState} from 'react'
 
-interface ContextProps{
-    children: React.ReactNode;
+// propriedades esperadas para o contexto
+interface ContextProps {
+  children: React.ReactNode;
 }
 
-interface User{
-    user: 
-    |
-    {
-        id: number;
-        email: string;
-        username: string;
-        userImg: string;
-        bgImg: string;
-    }
-    | undefined;
-    setUser: (newState: any) => void;   
+// estrutura esperada para representar um usuário no contexto
+interface User {
+  user:
+  | {
+      id: number;
+      email: string;
+      username: string;
+      userImg: string;
+      bgImg: string;
+  }
+  | undefined;
+  setUser: (newState: any) => void;
 }
 
-const initialValue = {
-    user: undefined,
-    setUser: ()=> {},
-}
+// valor inicial do contexto
+const initialValue: User = {
+  user: undefined,
+  setUser: () => {},
+};
 
-export const UserContext = createContext<User>(initialValue)
+// criação do contexto
+export const UserContext = createContext<User>(initialValue);
 
-// ... (other imports)
-
+// provedor do contexto que utiliza o estado local para manter as informações do usuário
 export const UserContextProvider = ({ children }: ContextProps) => {
-    const [user, setUser] = useState(initialValue.user);
-  
-    useEffect(() => {
-        let UserJSON = localStorage.getItem("rede: user");
-        setUser(UserJSON && JSON.parse(UserJSON));
-      }, []);
-  
-    return (
-      <UserContext.Provider value={{ user, setUser }}>
-        {children}
-      </UserContext.Provider>
-    );
-  };
-  
+  const [user, setUser] = useState(initialValue.user);
 
+  // efeito para carregar o usuário do localStorage ao montar o componente
+  useEffect(() => {
+      let userJSON = localStorage.getItem("rede: user");
+      setUser(userJSON && JSON.parse(userJSON));
+  }, []);
+
+  // retorna o provedor do contexto com os valores atuais do usuário e da função setUser
+  return (
+      <UserContext.Provider value={{ user, setUser }}>
+          {children}
+      </UserContext.Provider>
+  );
+};
+
+// exportação do contexto
 export default UserContext;

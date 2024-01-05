@@ -166,7 +166,6 @@ function Post(props:{post: IPost}) {
   <img
     className="rounded-lg w-full"
     src={`https://res.cloudinary.com/dptvlphju/image/upload/w_500,h_500,c_limit/v1701981347/codpet/${img}`}
-    // Substitua SEU_CLOUD_NAME pelo seu Cloudinary cloud_name
     alt="img do post"
   />
 )}

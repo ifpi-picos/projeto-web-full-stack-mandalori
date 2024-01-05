@@ -1,48 +1,48 @@
-# para rodar o projeto 
 
-## lado back-end
+# CodPet
 
-#### bibliotecas: 
-`npm install`
+### Baixar o projeto:
+```bash
+git clone https://github.com/ifpi-picos/projeto-web-full-stack-mandalori.git
+```
 
-### para rodar a api 
+### Lado do Backend
 
-crie um arquivo `.env` com os dados do mysql da sua maquina
-existe um documento chamado ".env.example nos moldes do que vc deve adicionar nos campos" (os tokens se mantem)
+### Acesse a pasta principal:
+```bash
+cd codpet/api
+```
+### Instalar dependencias:
+```bash
+npm install 
+```
 
+# Crie um arquivo .env com os dados do MySQL da sua máquina
+Existe um arquivo de exemplo do .env chamado .envexample que deve ser criado dentro da pasta api, basta apenas adicionar os dados do seu MySQL nos campos.
 
-e rode o comando: `npm run start`
+### Iniciar o projeto:
+```bash
+npm run start
+```
 
+### Lado do Frontend
 
-## lado front-end
+### Acesse a pasta principal:
+```bash
+cd codpet/client/rede
+```
+### Instalar dependencias:
+```bash
+npm install 
+```
+### Iniciar o projeto:
+```bash
+npm run dev
+```
 
-você precisa instalar as bibliotecas uutilizadas basta apenas usar esse comando dentro da pasta rede
+# Comandos para criar o banco de dados MYSQL utilizado na aplicação
 
-### bibliotecas:
-
-`npm install`
-
-depois na mesma pasta rode o comando
-
-`npm run dev`
-
-# script linux
-
-## back-api
-
-`yarn add bcrypt body-parser cookie-parser cors dotenv express jsonwebtoken multer my sql --save`
-
-`yarn start`
-
-## front-client
-
-`yarn add autoprefixer axios eslint eslint-config-next next postcss react react-dom react-icons tailwindcss typescript @tanstack/react-query moment nextjs reactjs --save`
-
-`yarn dev`
-
-:: comandos para criar o banco de dados utilizado na aplicação
-
-### crie um schema com o nome "codpet"
+```bash
 
 CREATE SCHEMA codpet;
 
@@ -96,6 +96,5 @@ CREATE TABLE codpet.friendship (
   CONSTRAINT follower_id FOREIGN KEY (follower_id) REFERENCES codpet.user(id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT followed_id FOREIGN KEY (followed_id) REFERENCES codpet.user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) AUTO_INCREMENT=1;
-
-
+```
 

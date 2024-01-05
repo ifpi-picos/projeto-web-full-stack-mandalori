@@ -12,7 +12,7 @@ const Page = () => {
           alt="Descrição da imagem"
           width={800}
           height={600}
-          priority={true}  // Add priority attribute
+          priority={true} 
         />
 
     <h1 className="text m-2" style={{ color: "#21344d", fontSize: "20px", fontWeight: "bold", fontStyle: "italic", alignItems: 'center' }}>Seja bem-vindo ao CodPet</h1>

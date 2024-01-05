@@ -9,12 +9,13 @@ const faqPanelStyle = {
 
 function Faq() {
   return (
-    <><title>Perguntas Frequentes - CodPet</title><div className="space-y-4">
+    <><title>Conheça o Sistema CodPet</title>
+    <div className="space-y-4">
       <details className="faq_panel bg-gray-100 p-4 rounded" open>
         <summary className="faq_label font-bold cursor-pointer">Origem</summary>
         <div className="faq_panel-body mt-2">
           <p className="faq_panel-answer text-gray-700">
-            O CodPet é um projeto desenvolvido por alunos do quarto período do curso de Análise e Desenvolvimento de Sistemas, no IFPI - Campus Picos.
+          O CodPet nasceu da ideia de tornar mais fácil a localização de animais perdidos e promover a adoção responsável. A proposta é criar uma central onde informações sobre animais perdidos, seus donos e outros detalhes sejam cadastrados, facilitando a devolução ou adoção dos mesmos.
           </p>
         </div>
       </details>

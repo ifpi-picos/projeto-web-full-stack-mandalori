@@ -17,7 +17,6 @@
 * *NextJs*
 * *MySQL*
 
-
 ##### Arquitetura e documentação
 
 * *MVC;*
@@ -27,7 +26,6 @@
 
 * *Autenticação e Autorização;*
 * *HTTPS.*
-
 
 ##### Outros repositorios do projeto
 

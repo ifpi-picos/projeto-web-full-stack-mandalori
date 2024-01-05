@@ -6,7 +6,7 @@ import Link from "next/link";
 import { makeRequest } from "../../../../axios";
 
 function Register() {
-  // Estados para controlar os campos de username, email, senha, confirmação de senha, erro, sucesso e carregamento
+  // estados para controlar os campos de username, email, senha, confirmação de senha, erro, sucesso e carregamento
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,12 +15,12 @@ function Register() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Função para lidar com o envio do formulário de registro
+  // função para lidar com o envio do formulário de registro
   const handleRegister = (e: any) => {
     e.preventDefault();
-    setLoading(true); // Inicia o estado de carregamento
+    setLoading(true); // inicia o estado de carregamento
 
-    // Faz a requisição para a API de registro
+    // faz a requisição para a API de registro
     makeRequest
       .post("auth/register", { username, email, password, confirmPassword })
       .then((res) => {
@@ -34,11 +34,11 @@ function Register() {
         setSuccess("");
       })
       .finally(() => {
-        setLoading(false); // Finaliza o estado de carregamento, independentemente do resultado
+        setLoading(false); // finaliza o estado de carregamento, independentemente do resultado
       });
   };
 
-  // Componente de Registro
+  // componente de Registro
 
   return (
     <>
@@ -61,7 +61,7 @@ function Register() {
       <button
         className="bg-blue-800 py-3 font-bold text-white rounded-lg hover:bg-blue-600"
         onClick={(e) => handleRegister(e)}
-        disabled={loading} // Desativa o botão durante o carregamento
+        disabled={loading} // desativa o botão durante o carregamento
       >
         {loading ? "Carregando..." : "Cadastrar"}
       </button>

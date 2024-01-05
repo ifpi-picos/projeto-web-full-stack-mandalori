@@ -54,7 +54,7 @@ function Login() {
       <button
         className="bg-blue-800 py-3 font-bold text-white rounded-lg hover:bg-blue-600"
         onClick={(e) => handleLogin(e)}
-        disabled={loading} // Desativa o botão durante o carregamento
+        disabled={loading} 
       >
         {loading ? "Entrando..." : "Entrar"}
       </button>

@@ -10,24 +10,24 @@ const faqStyle = {
   function Section() {
     return (
 <>
-  <title>Conheça o Sistema CodPet</title>
+  <title>Perguntas Frequentes - CodPet</title>
 
   <div className="space-y-4">
     <details className="faq_panel bg-gray-100 p-4 rounded" open>
-      <summary className="faq_label font-bold cursor-pointer">Proposta do Sistema</summary>
+      <summary className="faq_label font-bold cursor-pointer">Quem pode utilizar o CodPet?</summary>
       <div className="faq_panel-body mt-2">
         <p className="faq_panel-answer text-gray-700">
-          O CodPet nasceu da ideia de tornar mais fácil a localização de animais perdidos e promover a adoção responsável. A proposta é criar uma central onde informações sobre animais perdidos, seus donos e outros detalhes sejam cadastrados, facilitando a devolução ou adoção dos mesmos.
+        O CodPet é aberto a qualquer pessoa interessada em contribuir para a localização de animais perdidos e na promoção da adoção responsável. Seja um dono procurando seu animal ou alguém interessado em adotar, todos são bem-vindos.
         </p>
       </div>
     </details>
 
     <div className="faq_body">
       <details className="faq_panel bg-gray-100 p-4 rounded" open>
-        <summary className="faq_label font-bold cursor-pointer">Uso</summary>
+        <summary className="faq_label font-bold cursor-pointer">Como posso contribuir para o CodPet?</summary>
         <div className="faq_panel-body mt-2">
           <p className="faq_panel-answer text-gray-700">
-            O CodPet é um projeto independente com propósitos acadêmicos. Totalmente gratuito, ele está disponível para ser utilizado por qualquer pessoa interessada em contribuir para a causa da localização de animais perdidos e promoção da adoção responsável.
+          Você pode contribuir para o CodPet cadastrando informações sobre animais perdidos, compartilhando os casos nas nossa plataforma. Quanto mais a comunidade colaborar, mais eficiente será o sistema.
           </p>
         </div>
       </details>
@@ -35,10 +35,10 @@ const faqStyle = {
 
     <div className="faq_body">
       <details className="faq_panel bg-gray-100 p-4 rounded" open>
-        <summary className="faq_label font-bold cursor-pointer">Termos de Uso</summary>
+        <summary className="faq_label font-bold cursor-pointer">O CodPet cobra algum tipo de taxa?</summary>
         <div className="faq_panel-body mt-2">
           <p className="faq_panel-answer text-gray-700">
-            Ao se cadastrar no CodPet, você concorda e aceita os termos de uso dos seus dados no nosso sistema. Garantimos a total privacidade e seguimos rigorosamente a política de privacidade existente para proteger suas informações.
+          Não, o CodPet é totalmente gratuito. É uma iniciativa acadêmica independente que busca contribuir para a localização de animais perdidos e incentivar a adoção, sendo acessível a todos sem nenhum custo.
           </p>
         </div>
       </details>

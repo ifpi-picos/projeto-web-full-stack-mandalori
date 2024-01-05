@@ -5,7 +5,7 @@ import { checkToken } from '../middleware/tokenVallidation.js'
 const router = express.Router();
 
 router.get('/get-user', getUser);
-router.put('/update-user', checkToken, updateUser); // so faz o update user quando o token for valido
+router.put('/update-user', checkToken, updateUser); 
 router.delete('/delete-user', checkToken, deleteUser) 
 
 export default router

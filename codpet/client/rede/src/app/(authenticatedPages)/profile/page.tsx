@@ -15,6 +15,7 @@ function Profile({ searchParams }: { searchParams: { id: string } }) {
   const { user, setUser } = useContext(UserContext);
   const queryClient = useQueryClient();
 
+  // configura o contexto e variáveis de estado
   const [followed, setFollowed] = useState(false);
   const [username, setUserName] = useState("");
   const [userImg, setUserImg] = useState("");
@@ -23,6 +24,8 @@ function Profile({ searchParams }: { searchParams: { id: string } }) {
   const [editProfileError, setEditProfileError] = useState("");
   const [editProfileSuccess, setEditProfileSuccess] = useState("");
 
+
+  // consulta para obter dados do perfil do usuário
   const profileQuery = useQuery({
     queryKey: ["profile", searchParams.id],
     queryFn: () =>
@@ -195,6 +198,7 @@ function Profile({ searchParams }: { searchParams: { id: string } }) {
             >
               Editar perfil
             </button>
+            
           )}
           {editProfile && (
             <div className="fixed top-0 bottom-0 right-0 left-0 bg-[#00000094] z-10 flex items-center justify-center">
